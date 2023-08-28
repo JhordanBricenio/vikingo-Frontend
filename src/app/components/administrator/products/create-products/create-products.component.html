@@ -1,0 +1,123 @@
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Registrar</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Producto</a></li>
+            </ol>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Formulario</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+                            <form #registroForm="ngForm" (ngSubmit)="registro(registroForm)">
+
+                                <div class="row mb-4">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Nombre</mat-label>
+                                                <input [(ngModel)]="product.nombre" matInput type="text" required name="nombre" autofocus name="value">
+                                                <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear"
+                                                    (click)="value=''">
+                                                    <mat-icon>close</mat-icon>
+                                                </button>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Descripción</mat-label>
+                                                <input matInput  [(ngModel)]="product.descripcion" type="text"  name="descripcion">
+                                                <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear"
+                                                    (click)="value=''">
+                                                    <mat-icon>close</mat-icon>
+                                                </button>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>                              
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Cantidad</mat-label>
+                                                <input  [(ngModel)]="product.cantidad" type="number" required name="cantidad"  matInput placeholder="744555">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Precio</mat-label>
+                                                <input  [(ngModel)]="product.precio" type="number" name="precio" required matInput placeholder="744555">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Stock</mat-label>
+                                                <input  [(ngModel)]="product.stock" type="number" name="stock" required matInput placeholder="744555">
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Descuento</mat-label>
+                                                <input  [(ngModel)]="product.descuento" type="number" name="descuento" required matInput placeholder="744555">
+                                            </mat-form-field>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="row mt-4">
+                                        <label for="" class="">
+                                            <h4 class="title">Datos adicionales *</h4>
+                                        </label>
+                                        <div class="col-md-4">
+                                            <mat-form-field class="example-full-width" appearance="fill">
+                                                <mat-label>Tipo ?</mat-label>
+                                                <mat-select [(ngModel)]="selectedTipo" name="tipo">
+                                                    <mat-option value="individual">Individual</mat-option>
+                                                    <mat-option value="caja">Caja</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <mat-form-field class="example-full-width" appearance="fill" *ngIf="selectedTipo === 'caja'">
+                                                <mat-label>Cantidad: </mat-label>
+                                                <input [(ngModel)]="product.cantidadCaja" type="number" name="cantidadCaja" matInput placeholder="5">
+                                            </mat-form-field>
+                                        </div>  
+                                    </div>
+                                    <div class="row mt-3  mb-3">
+                                        <div class="col-lg-5  form-group">
+                                            <label for="">Categoría</label>
+                                            <select [compareWith]="compararCategoria" class="form-control custom-select"
+                                                [(ngModel)]="product.categoria" name="categoria" required>
+                                                <option [ngValue]="undefined">Seleccionar</option>
+                                                <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nombre}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-5 form-group">
+                                            <label for="">Marca</label>
+                                            <select [compareWith]="compararMarca" class="form-control custom-select"
+                                                [(ngModel)]="product.marca" name="marca" required>
+                                                <option [ngValue]="undefined">Seleccionar</option>
+                                                <option *ngFor="let marca of marcas" [ngValue]="marca">{{marca.nombre}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button [routerLink]="['/admin/products']" type="submit"
+                                    class="btn btn-rounded btn-info m-2">Cancelar</button>
+                                <button (ngSubmit)="registro(registroForm)" type="submit"
+                                    class="btn btn-rounded btn-danger">Guardar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

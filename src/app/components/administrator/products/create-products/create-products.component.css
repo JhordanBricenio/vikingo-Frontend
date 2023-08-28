@@ -1,0 +1,33 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  .example-form-field {
+    width: 200px;
+  }
+  .form-check-input{
+   width: 20px;
+    height: 20px;
+  }
+  .form-check-label{
+    font-size: 15px;
+  }
+  .title{
+    font-size: 15px;
+  }
+
+  label{
+    font-size: 15px;
+  }
+  .btn{
+  
+/*letra mas grande*/
+font-size: medium;
+    
+}
