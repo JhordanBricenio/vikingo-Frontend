@@ -1,0 +1,15 @@
+.boton{
+    background-color: #FF535B !important;
+}
+.list-group-item-primary{
+    background-color: rgb(76, 163, 245) !important;
+    color: black !important;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+.thead{
+    cursor: pointer;
+    background-color:   rgb(76, 163, 245) !important;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+

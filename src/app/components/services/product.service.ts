@@ -32,4 +32,6 @@ export class ProductService {
     deleteProduct(id):Observable<any>{
       return this._http.delete(this.url+'producto/'+id);
     }
+
+  
 }

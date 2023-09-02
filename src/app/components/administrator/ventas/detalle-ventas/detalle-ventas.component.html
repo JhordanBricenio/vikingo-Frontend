@@ -1,1 +1,57 @@
-<p>detalle-ventas works!</p>
+<div class="content-body">
+  <div class="container-fluid">
+    <div class="row page-titles">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active"><a href="javascript:void(0)">Tabla</a></li>
+        <li class="breadcrumb-item"><a href="javascript:void(0)">Ventas</a></li>
+      </ol>
+    </div>
+
+    <div class="card " *ngIf="venta">
+      <div class="card-header">{{title}}: {{venta.nota}}</div>
+      <div class="card-body">
+        <h4 class="card-title">
+          <a [routerLink]="['/admin/ventas']" class="boton btn btn-light btn-xs">&laquo; volver</a>
+        </h4>
+        <ul class="list-group my-2">
+          <li class="list-group-item list-group-item-primary">Datos de la venta</li>
+          <li class="list-group-item">Folio: {{venta.id}}</li>
+          <li class="list-group-item">Estado: {{venta.estado}}</li>
+          <li class="list-group-item">Fecha: {{venta.fecha}}</li>
+        </ul>
+
+        <table class="table table-striped table-hover table-bordered my-3">
+          <thead class="thead">
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of venta.dventas">
+              <td>{{item.producto.nombre}}</td>
+              <td>{{item.producto.precio}}</td>
+              <td>{{item.cantidad}}</td>
+              <td>{{item.subtotal}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <h5 class="float-right">
+          <span>Gran Total</span>: <span class="badge badge-secondary">120</span>
+        </h5>
+
+        <div class="card border-info mb-4" style="max-width: 350px;">
+          <div class="card card-header">
+            Observaciones
+          </div>
+          <div class="card card-body">
+            <p *ngIf="!venta.observacion">No tiene observación</p>
+            <p *ngIf="venta.observacion">{{venta.observacion}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

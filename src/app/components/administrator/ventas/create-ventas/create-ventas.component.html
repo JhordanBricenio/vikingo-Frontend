@@ -3,7 +3,7 @@
         <div class="row page-titles">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Tabla</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)"> Registro Ventas</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)"> Nueva Venta</a></li>
             </ol>
         </div>
         <!-- row -->
@@ -24,7 +24,7 @@
                                         <div class="col-md-6">
                                             <mat-form-field class="example-full-width">
                                                 <mat-label>Precio Envío</mat-label>
-                                                <input [(ngModel)]="venta.envio_precio" matInput type="number" 
+                                                <input [(ngModel)]="venta.envio_precio" matInput type="number"
                                                     name="nombre" autofocus name="value">
                                                 <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear"
                                                     (click)="value=''">
@@ -33,14 +33,13 @@
                                             </mat-form-field>
                                         </div>
                                         <div class="col-md-6">
-                                            <mat-form-field class="example-full-width">
+                                            <mat-form-field appearance="fill">
                                                 <mat-label>Estado</mat-label>
-                                                <input matInput [(ngModel)]="venta.estado" type="text"
-                                                    name="descripcion">
-                                                <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear"
-                                                    (click)="value=''">
-                                                    <mat-icon>close</mat-icon>
-                                                </button>
+                                                <mat-select [(ngModel)]="venta.estado" required name="estado">
+                                                    <mat-option *ngFor="let item of estado" [value]="item.value">
+                                                        {{item.viewValue}}
+                                                    </mat-option>
+                                                </mat-select>
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -50,68 +49,48 @@
                                         <div class="col-lg-7">
                                             <div class="accordion-alt" id="payment-methods">
 
-                                                <!-- Card: Credit card -->
-                                                <div class="card mb-3 px-4 py-3 border rounded box-shadow-sm">
-                                                    <div class="card-header py-2">
-                                                        <div class="accordion-heading custom-control custom-radio"
-                                                            data-toggle="collapse" data-target="#cc-card">
-                                                            <input type="radio" class="custom-control-input" id="cc"
-                                                                name="payment" checked>
-                                                            <label for="cc"
-                                                                class="custom-control-label d-flex align-items-center">
-                                                                <strong class="d-block mr-3">Efectivo</strong>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Card: PayPal -->
-                                                <div class="card mb-3 px-4 py-3 border rounded box-shadow-sm">
-                                                    <div class="card-header py-2">
-                                                        <div class="accordion-heading custom-control custom-radio"
-                                                            data-toggle="collapse" data-target="#paypal-card">
-                                                            <input type="radio" class="custom-control-input" id="paypal"
-                                                                name="payment">
-                                                            <label for="paypal"
-                                                                class="custom-control-label d-flex align-items-center">
-                                                                <strong class="d-block mr-3"> Yape</strong>
-                                                                                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="collapse" id="paypal-card"
-                                                        data-parent="#payment-methods">
-                                                        <div class="card-body pt-3 pb-0" #paypalButton>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Card: Cash -->
-                                                <div class="card mb-3 px-4 py-3 border rounded box-shadow-sm">
-                                                    <div class="card-header py-2">
-                                                        <div class="accordion-heading custom-control custom-radio"
-                                                            data-toggle="collapse" data-target="#cash-card">
-                                                            <input type="radio" class="custom-control-input" id="cash"
-                                                                name="payment">
-                                                            <label for="cash" class="custom-control-label">
-                                                                <strong class="d-block mr-3"> Crédito</strong>
-                                                            </label>
-                                                        </div>
-                                                    </div> 
-                                                </div>
+                                                <mat-form-field appearance="fill" class="mt-4">
+                                                    <mat-label>Pago</mat-label>
+                                                    <mat-select [(ngModel)]="venta.metodoPago" required name="estado">
+                                                        <mat-option *ngFor="let item of metodo" [value]="item.value">
+                                                            {{item.viewValue}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
                                             </div>
                                         </div>
                                     </div>
 
                                     <hr class="mb-4 pb-2">
 
-                                    <!-- Additional info -->
-                                    <h2 class="h4 mb-4">3. Información adicional (opcional)</h2>
-                                    <div class="form-group">
-                                        <label for="ch-notes">Mensaje</label>
-                                        <textarea id="ch-notes" class="form-control form-control-lg" rows="5"
-                                            placeholder="Mensaje adicional" name="nota"
-                                            [(ngModel)]="venta.nota"></textarea>
+
+                                </div>
+                                <!-- Additional info -->
+                                <h2 class="h4 mb-4">3. Información adicional (opcional)</h2>
+                                <div class="form-group row">
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Observación</mat-label>
+                                            <input [(ngModel)]="venta.observacion" matInput type="text"
+                                                name="observacion" autofocus>
+                                            <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear"
+                                                (click)="value=''">
+                                                <mat-icon>close</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mt-4">
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <input type="text" placeholder="Añadir producto" aria-label="Productos" matInput [formControl]="autocompleteControl" [matAutocomplete]="auto">
+                                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="mostrarNombre" >
+                                              <mat-option *ngFor="let producto of productosFiltrados | async" [value]="producto">
+                                                {{producto.nombre}}
+                                              </mat-option>
+                                            </mat-autocomplete>
+                                          </mat-form-field>
                                     </div>
                                 </div>
                                 <button [routerLink]="['/admin/products']" type="submit"

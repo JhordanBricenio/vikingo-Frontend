@@ -7,6 +7,7 @@ import { IndexProductsComponent } from './components/administrator/products/inde
 import { IndexVentasComponent } from './components/administrator/ventas/index-ventas/index-ventas.component';
 import { CreateProductsComponent } from './components/administrator/products/create-products/create-products.component';
 import { CreateVentasComponent } from './components/administrator/ventas/create-ventas/create-ventas.component';
+import { DetalleVentasComponent } from './components/administrator/ventas/detalle-ventas/detalle-ventas.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
 
     { path: 'ventas', component: IndexVentasComponent },
     { path: 'ventas/create', component: CreateVentasComponent },
+    { path: 'ventas/detalle/:id', component: DetalleVentasComponent },
 
 
     {path: '', component: IndexComponent},
