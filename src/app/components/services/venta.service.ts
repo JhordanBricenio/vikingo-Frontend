@@ -35,6 +35,16 @@ export class VentaService {
     return this._http.get<Product[]>(this.url+'producto/'+term);
   }
 
+  getVentasByFecha(fechaInicio?:Date, fechaFin?:Date):Observable<any>{
+    
+    let url = 'http://localhost:8080/api/ventas/fechas';
+    if(fechaInicio != null && fechaFin != null){
+      url += `?fecha1=${fechaInicio}&fecha2=${fechaFin}`;
+    }
+    return this._http.get<any>(url);
+    
+  }
+ 
   
   
 }

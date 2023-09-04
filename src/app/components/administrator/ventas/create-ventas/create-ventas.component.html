@@ -51,7 +51,7 @@
 
                                                 <mat-form-field appearance="fill" class="mt-4">
                                                     <mat-label>Pago</mat-label>
-                                                    <mat-select [(ngModel)]="venta.metodoPago" required name="estado">
+                                                    <mat-select [(ngModel)]="venta.metodoPago" required name="metodoPago">
                                                         <mat-option *ngFor="let item of metodo" [value]="item.value">
                                                             {{item.viewValue}}
                                                         </mat-option>
@@ -70,6 +70,17 @@
                                 <div class="form-group row">
                                     <div class="col-6">
                                         <mat-form-field class="example-full-width">
+                                            <mat-label>Nota</mat-label>
+                                            <input [(ngModel)]="venta.nota" matInput type="text"
+                                                name="nota" autofocus>
+                                            <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear"
+                                                (click)="value=''">
+                                                <mat-icon>close</mat-icon>
+                                            </button>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
                                             <mat-label>Observación</mat-label>
                                             <input [(ngModel)]="venta.observacion" matInput type="text"
                                                 name="observacion" autofocus>
@@ -84,15 +95,55 @@
                                 <div class="form-group row mt-4">
                                     <div class="col-6">
                                         <mat-form-field>
-                                            <input type="text" placeholder="Añadir producto" aria-label="Productos" matInput [formControl]="autocompleteControl" [matAutocomplete]="auto">
-                                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="mostrarNombre" >
-                                              <mat-option *ngFor="let producto of productosFiltrados | async" [value]="producto">
-                                                {{producto.nombre}}
-                                              </mat-option>
+                                            <input type="text" required placeholder="Añadir producto" aria-label="Productos"
+                                                matInput [formControl]="autocompleteControl" [matAutocomplete]="auto">
+                                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="mostrarNombre"
+                                                (optionSelected)="seleccionarProducto($event)">
+                                                <mat-option *ngFor="let producto of productosFiltrados | async"
+                                                    [value]="producto">
+                                                    {{producto.nombre}}
+                                                </mat-option>
                                             </mat-autocomplete>
-                                          </mat-form-field>
+                                        </mat-form-field>
+                                        
                                     </div>
                                 </div>
+                                <div class="alert alert-secondary alert-dismissible fade show" *ngIf="venta.dventas.length == 0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="btn-cerrar" _mstaria-label="130091" _msthash="321">
+                                    </button>
+                                    <font _mstmutation="1" _msttexthash="760539" _msthash="322"><strong _mstmutation="1"
+                                            _istranslated="1">¡Advertencia!</strong> No hay productos asignados para la venta. </font>
+                                </div>
+                                <table class="table table-striped table-hover table-sm"
+                                    *ngIf="venta.dventas.length > 0">
+                                    <thead>
+                                        <tr>
+                                            <th>Producto</th>
+                                            <th>Precio</th>
+                                            <th>Cantidad</th>
+                                            <th>Total</th>
+                                            <th>Eliminar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of venta.dventas">
+                                            <td>{{item.producto.nombre}}</td>
+                                            <td>{{item.producto.precio}}</td>
+                                            <td><input type="number" value="{{item.cantidad}}"
+                                                    class="form-control col-sm-4"
+                                                    (change)="actualizarCantidad(item.producto.id, $event)"></td>
+                                            <td>{{item.calcularImporte()}}</td>
+                                            <td><button class="btn btn-danger btn-sm" type="button"
+                                                    (click)="eliminarItemFactura(item.producto.id)">x</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <h5 class="float-left" *ngIf="venta.dventas.length > 0">Gran Total: <span
+                                        class="badge badge-danger">{{venta.calcularGranTotal()}}</span></h5>
+
+
+
                                 <button [routerLink]="['/admin/products']" type="submit"
                                     class="btn btn-rounded btn-info m-2">Cancelar</button>
                                 <button (ngSubmit)="registro(registroForm)" type="submit"

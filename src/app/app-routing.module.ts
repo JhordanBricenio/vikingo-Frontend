@@ -8,6 +8,7 @@ import { IndexVentasComponent } from './components/administrator/ventas/index-ve
 import { CreateProductsComponent } from './components/administrator/products/create-products/create-products.component';
 import { CreateVentasComponent } from './components/administrator/ventas/create-ventas/create-ventas.component';
 import { DetalleVentasComponent } from './components/administrator/ventas/detalle-ventas/detalle-ventas.component';
+import { DetalleProductsComponent } from './components/administrator/products/detalle-products/detalle-products.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,8 @@ const routes: Routes = [
     { path: 'dashboard', component: IndexComponent },
     { path: 'products', component: IndexProductsComponent },
     { path: 'products/create', component: CreateProductsComponent },
+    { path: 'products/page/:page', component: IndexProductsComponent },
+    { path: 'products/ver/:id', component: DetalleProductsComponent },
 
     { path: 'ventas', component: IndexVentasComponent },
     { path: 'ventas/create', component: CreateVentasComponent },

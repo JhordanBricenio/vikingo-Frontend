@@ -5,4 +5,8 @@ export class DVenta {
     cantidad:number=1;
     producto:Product;
     subtotal:number;
+
+    public calcularImporte():number{
+        return this.cantidad*this.producto.precio;
+    }
 }

@@ -10,8 +10,25 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Productos Registrados</h4>
+                        <!-- Filtros -->
+                        <h3 class="text-uppercase">Filtros</h3>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Producto</mat-label>
+                            <input matInput name="filtro" [(ngModel)]="nombre" placeholder="Buscar por nombre..."
+                                aria-label="State" [formControl]="stateCtrl">
+                            <mat-icon *ngIf="nombre"
+                                style="border:none ; background:none; cursor: pointer; position: absolute;"
+                                (click)="filtrar()">search</mat-icon>
+                        </mat-form-field>
+                        <br>
+                        <mat-slide-toggle [checked]="stateCtrl.disabled"
+                            (change)="stateCtrl.disabled ? stateCtrl.enable() : stateCtrl.disable()">
+                            Deshabilitar?
+                        </mat-slide-toggle>
+                        <button type="submit" (click)="reset()" class="btn btn-dark mt-3">Todos</button>
                     </div>
+                    <!-- Aquí puedes agregar el contenido de la tarjeta si es necesario -->
+
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-responsive-md">
@@ -29,25 +46,65 @@
                                 <tbody>
                                     <tr *ngFor="let product of products">
                                         <td><strong>{{product.id}}</strong></td>
-                                        <td>{{product.nombre}}</td>
+                                        <td *ngIf="product.stock<=2">
+                                            <span class="badge light badge-danger">{{product.nombre}}</span>
+                                            
+                                        </td>
+                                        <td *ngIf="product.stock>2">
+                                            {{product.nombre}}
+                                        </td>
                                         <td>{{product.precio}}</td>
-                                        <td>{{product.stock}}</td>
+
+                                        <td *ngIf="product.stock==0">
+                                            <span class="badge light badge-danger">Agotado</span>
+                                        </td>
+                                        <td *ngIf="product.stock>0">
+                                            <span class="badge light badge-primary">{{product.stock}}</span>
+                                        </td>
                                         <td>{{product.createdAt}}</td>
                                         <td><span class="badge light badge-success">{{product.estado}}</span></td>
                                         <td>
                                             <div class="dropdown">
-                                                <button type="button" class="btn btn-success light sharp" data-bs-toggle="dropdown">
-                                                    <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
+                                                <button type="button" class="btn btn-success light sharp"
+                                                    data-bs-toggle="dropdown">
+                                                    <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none"
+                                                            fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <circle fill="#000000" cx="5" cy="12" r="2" />
+                                                            <circle fill="#000000" cx="12" cy="12" r="2" />
+                                                            <circle fill="#000000" cx="19" cy="12" r="2" />
+                                                        </g>
+                                                    </svg>
                                                 </button>
                                                 <div class="dropdown-menu">
+                                                    <a class="dropdown-item" [routerLink]="['/admin/products/ver', product.id]">Ver</a>
                                                     <a class="dropdown-item" href="#">Editar</a>
-                                                    <a class="dropdown-item" style="cursor: pointer;" (click)="delete(product)">Eliminar</a>
+                                                    <a class="dropdown-item" style="cursor: pointer;"
+                                                        (click)="delete(product)">Eliminar</a>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
+
+                        </div>
+
+                        <ng-container *ngIf="products.length<=0">
+                            <div>
+                                <mat-list-item>
+                                    <mat-icon mat-list-icon>info</mat-icon>
+                                    <div mat-line>No hay productos</div>
+                                </mat-list-item>
+                            </div>
+                        </ng-container>
+
+
+
+
+                        <div>
+                            <paginator-products *ngIf="pagination" [pagination]="pagination"></paginator-products>
                         </div>
                     </div>
                 </div>
@@ -56,4 +113,3 @@
 
     </div>
 </div>
-

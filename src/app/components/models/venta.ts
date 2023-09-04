@@ -10,5 +10,13 @@ export class Venta {
     nota:string;
     fecha:Date;
     observacion:string;
-    dVentas: Array<DVenta>=[]
+    dventas: Array<DVenta>=[]
+
+    calcularGranTotal(): number {
+        this.totalPagar = 0;
+        this.dventas.forEach((item: DVenta) => {
+          this.totalPagar += item.calcularImporte();
+        });
+        return this.totalPagar;
+      }
 }

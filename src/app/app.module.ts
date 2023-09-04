@@ -40,6 +40,7 @@ import { DetalleProductsComponent } from './components/administrator/products/de
 import { IndexVentasComponent } from './components/administrator/ventas/index-ventas/index-ventas.component';
 import { CreateVentasComponent } from './components/administrator/ventas/create-ventas/create-ventas.component';
 import { DetalleVentasComponent } from './components/administrator/ventas/detalle-ventas/detalle-ventas.component';
+import { PaginatorProductsComponent } from './components/administrator/products/paginator-products/paginator-products.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { DetalleVentasComponent } from './components/administrator/ventas/detall
     DetalleProductsComponent,
     IndexVentasComponent,
     CreateVentasComponent,
-    DetalleVentasComponent
+    DetalleVentasComponent,
+    PaginatorProductsComponent
   ],
   imports: [
     BrowserModule,
