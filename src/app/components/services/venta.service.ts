@@ -44,6 +44,12 @@ export class VentaService {
     return this._http.get<any>(url);
     
   }
+
+  //Cambiar estado de la venta
+  updateVenta(ventaId:number, nuevoEstado:string):Observable<Venta>{
+    return this._http.put<Venta>('http://localhost:8080/api/ventas/' + ventaId + '/cambiarEstado?nuevoEstado=' + nuevoEstado, {})
+
+  }
  
   
   

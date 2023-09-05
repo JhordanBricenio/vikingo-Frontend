@@ -17,4 +17,16 @@ export class MarcaService {
   getAllMarcas():Observable<Marca[]>{
     return this._http.get<Marca[]>(this.url+'marcas');
   }
+
+  getMarca(id:number):Observable<Marca>{
+    return this._http.get<Marca>(this.url+'marcas/'+id);
+  }
+
+  createMarca(marca:Marca):Observable<Marca>{
+    return this._http.post<Marca>(this.url+'marcas', marca);
+  }
+
+  deleteMarca(id:number):Observable<Marca>{
+    return this._http.delete<Marca>(this.url+'marcas/'+id);
+  }
 }

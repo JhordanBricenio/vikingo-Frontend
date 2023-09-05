@@ -41,6 +41,10 @@ import { IndexVentasComponent } from './components/administrator/ventas/index-ve
 import { CreateVentasComponent } from './components/administrator/ventas/create-ventas/create-ventas.component';
 import { DetalleVentasComponent } from './components/administrator/ventas/detalle-ventas/detalle-ventas.component';
 import { PaginatorProductsComponent } from './components/administrator/products/paginator-products/paginator-products.component';
+import { IndexMarcasComponent } from './components/administrator/marcas/index-marcas/index-marcas.component';
+import { CreateMarcasComponent } from './components/administrator/marcas/create-marcas/create-marcas.component';
+import { IndexCategoriesComponent } from './components/administrator/categories/index-categories/index-categories.component';
+import { CreateCategoriesComponent } from './components/administrator/categories/create-categories/create-categories.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +58,11 @@ import { PaginatorProductsComponent } from './components/administrator/products/
     IndexVentasComponent,
     CreateVentasComponent,
     DetalleVentasComponent,
-    PaginatorProductsComponent
+    PaginatorProductsComponent,
+    IndexMarcasComponent,
+    CreateMarcasComponent,
+    IndexCategoriesComponent,
+    CreateCategoriesComponent
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,8 @@
           <li class="list-group-item list-group-item-primary">Datos de la venta</li>
           <li class="list-group-item">Folio: {{venta.id}}</li>
           <li class="list-group-item">Estado: {{venta.estado}}</li>
-          <li class="list-group-item">Fecha: {{venta.fecha}}</li>
+          <li class="list-group-item">Precio Envío: {{venta.envio_precio}}</li>
+          <li class="list-group-item">Fecha: {{venta.fecha| date:"EEEE dd, MMMM yyyy"}}</li>
         </ul>
 
         <table class="table table-striped table-hover table-bordered my-3">
@@ -32,9 +33,9 @@
           <tbody>
             <tr *ngFor="let item of venta.dventas">
               <td>{{item.producto.nombre}}</td>
-              <td>{{item.producto.precio}}</td>
+              <td>{{item.producto.precioVenta}}</td>
               <td>{{item.cantidad}}</td>
-              <td>{{item.subtotal}}</td>
+              <td>{{item.importe}}</td>
             </tr>
           </tbody>
         </table>

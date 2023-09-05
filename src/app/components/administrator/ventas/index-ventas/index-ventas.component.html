@@ -71,13 +71,19 @@
                                             {{item.id}}
                                         </td>
                                         <td>{{item.nota}}</td>
-                                        <td>
-                                            <span class="badge badge-success">{{item.estado}}</span>
+                                        <td *ngIf="item.estado=='Pagada'">
+                                            <span style="cursor: pointer;" (click)="cambiarEstadoCerrada(item.id)" class="badge badge-success">{{item.estado}}</span>
                                         </td>
-                                        <td>{{ item.fecha | date: 'dd/MM/yyyy' }}</td>
+                                        <td *ngIf="item.estado=='Cerrada'">
+                                            <span  class="badge badge-danger">{{item.estado}}</span>
+                                        </td>
+                                        <td *ngIf="item.estado=='Pendiente'">
+                                            <span style="cursor: pointer;" class="badge badge-warning" (click)="cambiarEstadoPagada(item.id)">{{item.estado}}</span>
+                                        </td>
+                                        <td>{{ item.fecha | date: 'dd/MM/YYYY'}}</td>
                                         <td><span class="badge badge-primary">S/. {{item.totalPagar}}.0</span>
                                         </td>
-                                        <td><span><a href="javascript:void()" class="me-4" data-bs-toggle="tooltip"
+                                        <td><span><a [routerLink]="['/admin/ventas/edit', item.id]" class="me-4" data-bs-toggle="tooltip"
                                                     data-placement="top" title="Edit"><i
                                                         class="fas fa-pencil-alt color-muted"></i> </a><a
                                                     (click)="delete(item)" style="cursor: pointer;"

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 import { Observable, flatMap, map, startWith } from 'rxjs';
 import { DVenta } from 'src/app/components/models/d-venta';
 import { Product } from 'src/app/components/models/product';
@@ -40,8 +41,7 @@ export class CreateVentasComponent {
 
   estado: Estado[] = [
     { value: 'Pendiente', viewValue: 'Pendiente' },
-    { value: 'Pagado', viewValue: 'Pagado' },
-    { value: 'Cancelado', viewValue: 'Cancelado' }
+    { value: 'Pagada', viewValue: 'Pagada' }
   ];
 
   venta: Venta;
@@ -49,7 +49,8 @@ export class CreateVentasComponent {
   value = '';
   hideRequiredControl = new FormControl(false);
 
-  constructor(private ventaService: VentaService, private snack: MatSnackBar, private productoService: VentaService) {
+  constructor(private ventaService: VentaService, private snack: MatSnackBar, 
+    private activatedRoute: ActivatedRoute) {
     this.venta = new Venta();
   }
 
@@ -57,6 +58,12 @@ export class CreateVentasComponent {
   ngOnInit() {
 
     this.initData();
+    this.activatedRoute.paramMap.subscribe(params => {
+      let id = +params.get('id');
+      if (id) {
+        this.ventaService.getVentaById(id).subscribe((venta) => this.venta = venta);
+      }
+    });
 
   }
 
@@ -159,9 +166,6 @@ export class CreateVentasComponent {
   eliminarItemFactura(id: number): void {
     this.venta.dventas = this.venta.dventas.filter((item: DVenta) => id !== item.producto.id);
   }
-
-
-
 
   registro(registroForm: any) {
     if (this.venta.dventas.length == 0) {

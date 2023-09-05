@@ -45,10 +45,19 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let product of products">
-                                        <td><strong>{{product.id}}</strong></td>
+                                        <td>
+                                            <div class="imagen">
+                                                <img  *ngIf="product?.imagen"
+                                                    src="http://localhost:8080/api/producto/upload/img/{{product.imagen}}"
+                                                    alt="...">
+                                                <img  *ngIf="!product?.imagen"
+                                                    src="http://localhost:8080/api/producto/upload/img/nofoto.jpg"
+                                                    alt="...">
+                                            </div>
+                                        </td>
                                         <td *ngIf="product.stock<=2">
                                             <span class="badge light badge-danger">{{product.nombre}}</span>
-                                            
+
                                         </td>
                                         <td *ngIf="product.stock>2">
                                             {{product.nombre}}
@@ -62,7 +71,12 @@
                                             <span class="badge light badge-primary">{{product.stock}}</span>
                                         </td>
                                         <td>{{product.createdAt}}</td>
-                                        <td><span class="badge light badge-success">{{product.estado}}</span></td>
+                                        <td *ngIf="product.estado=='ACTIVO'">
+                                            <span class="badge light badge-success">{{product.estado}}</span>
+                                        </td>
+                                        <td *ngIf="product.estado=='INACTIVO'">
+                                            <span class="badge light badge-warning">{{product.estado}}</span>
+                                        </td>
                                         <td>
                                             <div class="dropdown">
                                                 <button type="button" class="btn btn-success light sharp"
@@ -78,8 +92,10 @@
                                                     </svg>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" [routerLink]="['/admin/products/ver', product.id]">Ver</a>
-                                                    <a class="dropdown-item" href="#">Editar</a>
+                                                    <a class="dropdown-item"
+                                                        [routerLink]="['/admin/products/ver', product.id]">Ver</a>
+                                                    <a class="dropdown-item"
+                                                        [routerLink]="['/admin/products/edit',product.id]">Editar</a>
                                                     <a class="dropdown-item" style="cursor: pointer;"
                                                         (click)="delete(product)">Eliminar</a>
                                                 </div>

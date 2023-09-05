@@ -17,4 +17,12 @@ export class CategoriaService {
   getAllCategories():Observable<Categoria[]>{
     return this._http.get<Categoria[]>(this.url+'categoria');
   }
+
+  delete(id:number):Observable<any>{
+    return this._http.delete(this.url+'categoria/'+id);
+  }
+
+  save(categoria:Categoria):Observable<any>{
+    return this._http.post(this.url+'categoria',categoria);
+  }
 }

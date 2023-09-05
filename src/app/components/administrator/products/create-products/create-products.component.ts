@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 import { Categoria } from 'src/app/components/models/categoria';
 import { Marca } from 'src/app/components/models/marca';
 import { Product } from 'src/app/components/models/product';
@@ -29,7 +30,8 @@ export class CreateProductsComponent implements OnInit {
 
 
   constructor(private snack: MatSnackBar, private productService:ProductService, 
-    private categoriaService:CategoriaService, private marcaService:MarcaService) { 
+    private categoriaService:CategoriaService, private marcaService:MarcaService,
+    private activateRoute:ActivatedRoute) { 
     this.product= new Product();
   }
 
@@ -41,10 +43,23 @@ export class CreateProductsComponent implements OnInit {
     this.marcaService.getAllMarcas().subscribe(
       marcas=>this.marcas= marcas
       );
+
+    this.activateRoute.paramMap.subscribe(params=>{
+      let id=+params.get('id');
+      if(id){
+        this.productService.getProductsId(id).subscribe(product=>{
+          this.product=product;
+        });
+      }
+    }
+    );
   }
 
   registro(registroForm: any) {
     if (registroForm.valid) {
+      if(this.product.id){
+        this.update(registroForm);
+      }
       this.productService.save(this.product).subscribe(
         response => {
           this.snack.open('Producto creado con éxito', 'Cerrar', {
@@ -55,6 +70,28 @@ export class CreateProductsComponent implements OnInit {
           Swal.fire(
             'Producto creado',
             `Producto ${response.nombre} creado con éxito!`,
+            'success'
+          );
+        }
+      );
+    }else{
+      this.snack.open('Los datos del formulario no son válidos', 'Cerrar', {
+        duration: 3000
+      });
+    }
+  }
+  update(registroForm: any) {
+    if (registroForm.valid) {
+      this.productService.updateProducts(this.product).subscribe(
+        response => {
+          this.snack.open('Producto actualizado con éxito', 'Cerrar', {
+            duration: 3000
+          });
+          this.product = new Product();
+          registroForm.reset();
+          Swal.fire(
+            'Producto actualizado',
+            `Producto ${response.nombre} actualizado con éxito!`,
             'success'
           );
         }

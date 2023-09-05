@@ -50,26 +50,26 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                             <mat-form-field class="example-full-width">
-                                                <mat-label>Precio</mat-label>
+                                                <mat-label>Precio Compra</mat-label>
                                                 <input  [(ngModel)]="product.precio" type="number" name="precio" required matInput placeholder="744555">
                                             </mat-form-field>
                                         </div>
                                         <div class="col-md-3">
                                             <mat-form-field class="example-full-width">
                                                 <mat-label>Stock</mat-label>
-                                                <input  [(ngModel)]="product.stock" type="number" name="stock" required matInput placeholder="744555">
+                                                <input disabled  [(ngModel)]="product.stock" type="number" name="stock" required matInput placeholder="744555">
                                             </mat-form-field>
                                         </div>
 
                                         <div class="col-md-3">
                                             <mat-form-field class="example-full-width">
-                                                <mat-label>Descuento</mat-label>
-                                                <input  [(ngModel)]="product.descuento" type="number" name="descuento" required matInput placeholder="744555">
+                                                <mat-label>Precio Venta</mat-label>
+                                                <input  [(ngModel)]="product.precioVenta" type="number" name="precioVenta" required matInput placeholder="744555">
                                             </mat-form-field>
                                         </div>
                                        
                                     </div>
-                                    <div class="row mt-4">
+                                    <!--<div class="row mt-4">
                                         <label for="" class="">
                                             <h4 class="title">Datos adicionales *</h4>
                                         </label>
@@ -88,7 +88,7 @@
                                                 <input [(ngModel)]="product.cantidadCaja" type="number" name="cantidadCaja" matInput placeholder="5">
                                             </mat-form-field>
                                         </div>  
-                                    </div>
+                                    </div>-->
                                     <div class="row mt-3  mb-3">
                                         <div class="col-lg-5  form-group">
                                             <label for="">Categoría</label>

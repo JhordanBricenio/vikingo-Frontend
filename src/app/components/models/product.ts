@@ -6,7 +6,6 @@ export class Product {
     nombre: string;
     descripcion: string;
     cantidad:number;
-    cantidadCaja:number;
     precio: number;
     precioVenta: number;
     imagen: string;
@@ -15,7 +14,6 @@ export class Product {
     estado: string;
     createdAt: string;
     nventas: number;
-    descuento: number;
     categoria:Categoria;
     marca:Marca;
 }

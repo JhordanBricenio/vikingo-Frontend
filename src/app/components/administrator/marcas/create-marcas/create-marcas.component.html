@@ -1,0 +1,57 @@
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Registrar</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Producto</a></li>
+            </ol>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Formulario</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+                            <form #registroForm="ngForm" (ngSubmit)="registro(registroForm)">
+
+                                <div class="row mb-4">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Nombre</mat-label>
+                                                <input [(ngModel)]="marca.nombre" matInput type="text" required
+                                                    name="nombre" autofocus name="value">
+                                                <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear"
+                                                    (click)="value=''">
+                                                    <mat-icon>close</mat-icon>
+                                                </button>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Descripción</mat-label>
+                                                <input matInput [(ngModel)]="marca.descripcion" type="text"
+                                                    name="descripcion">
+                                                <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear"
+                                                    (click)="value=''">
+                                                    <mat-icon>close</mat-icon>
+                                                </button>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <button [routerLink]="['/admin/products']" type="submit"
+                                    class="btn btn-rounded btn-info m-2">Cancelar</button>
+                                <button (ngSubmit)="registro(registroForm)" type="submit"
+                                    class="btn btn-rounded btn-danger">Guardar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

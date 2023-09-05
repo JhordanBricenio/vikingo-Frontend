@@ -8,25 +8,86 @@
             </ol>
         </div>
         <div class="card">
-            <mat-card class="card-body">
-                <mat-card-header>
-                    <mat-card-title>{{ producto.nombre }}</mat-card-title>
-                    <mat-card-subtitle>Categoría: {{ producto.categoria.nombre }}</mat-card-subtitle>
-                </mat-card-header>
-                
-                <mat-card-content>
-                    <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
-                    <p><strong>Precio:</strong> {{ producto.precio | currency:'USD' }}</p>
-                    <p><strong>Stock:</strong> {{ producto.stock }}</p>
-                    <p><strong>Estado:</strong> {{ producto.estado }}</p>
-                    <p><strong>SKU:</strong> {{ producto.sku }}</p>
-                    <p><strong>Marca:</strong> {{ producto.marca.nombre }}</p>
-                    <p><strong>Cantidad en Caja:</strong> {{ producto.cantidadCaja }}</p>
-                    <p><strong>Descuento:</strong> {{ producto.descuento | percent }}</p>
-                    <p><strong>Fecha de Creación:</strong> {{ producto.createdAt }}</p>
-                    <p><strong>Número de Ventas:</strong> {{ producto.nventas }}</p>
-                </mat-card-content>
-            </mat-card>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Nombre:</th>
+                                <td>{{ producto.nombre }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Categoría:</th>
+                                <td>{{ producto.categoria.nombre }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Descripción:</th>
+                                <td>{{ producto.descripcion }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Estado:</th>
+                                <td>
+                                    <span class="badge badge-success">{{ producto.estado }}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Fecha De Registro:</th>
+                                <td>{{ producto.createdAt | date: 'dd/MM/YYYY' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Precio Compra:</th>
+                                <td>{{ producto.precio | currency:'USD' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Precio Venta:</th>
+                                <td>{{ producto.precioVenta | currency:'USD' }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Stock:</th>
+                                <td>{{ producto.stock }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">SKU:</th>
+                                <td>{{ producto.sku }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Marca:</th>
+                                <td>{{ producto.marca.nombre }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Número de Ventas:</th>
+                                <td>{{ producto.nventas }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
         </div>
-    </div>
+
+        <!--Card para imagen-->
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center">
+                    <div class="input-group mb-3" style="max-width: 300px; margin: 0 auto;">
+                        <input (change)="seleccionarFoto($event)" type="file" class="form-control" id="inputGroupFile04"
+                            aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button (click)="subirFoto()" [disabled]="!fotoSeleccionada" class="btn btn-outline-secondary"
+                            type="button" id="inputGroupFileAddon04">Subir</button>
+                    </div>
+                    <div *ngIf="progreso > 0" class="progress" style="height: 40px; max-width: 300px; margin: 10px auto;">
+                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" aria-label="Info striped example"
+                            [ngStyle]="{ width: progreso + '%' }" [attr.aria-valuenow]="progreso" aria-valuemin="0" aria-valuemax="100">
+                            {{ progreso }}%
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <img *ngIf="producto?.imagen" src="http://localhost:8080/api/producto/upload/img/{{ producto.imagen }}"
+                    alt="{{ producto.imagen }}" class="img-thumbnail rounded" style="max-width: 300px; margin: 10px auto;">
+            </div>
+        </div>
+        
+
 </div>

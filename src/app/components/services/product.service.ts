@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GLOBAL } from './GLOBAL';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { Product } from '../models/product';
 
 @Injectable({
@@ -49,6 +49,21 @@ export class ProductService {
     return this._http.get<any>(url);
 
   }
+
+  subirFoto(foto: File, id): Observable<HttpEvent<{}>> {
+    let formData = new FormData();
+    formData.append('file', foto);
+    formData.append('id', id.toString());
+    const req = new HttpRequest('POST', this.url + 'producto/upload', formData, {
+       reportProgress: true,
+    });
+    return this._http.request(req).pipe(
+       catchError(e => {
+          return throwError(()=>e);
+       })
+    );
+
+ }
 
 
 }

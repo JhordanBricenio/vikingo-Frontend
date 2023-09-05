@@ -9,6 +9,10 @@ import { CreateProductsComponent } from './components/administrator/products/cre
 import { CreateVentasComponent } from './components/administrator/ventas/create-ventas/create-ventas.component';
 import { DetalleVentasComponent } from './components/administrator/ventas/detalle-ventas/detalle-ventas.component';
 import { DetalleProductsComponent } from './components/administrator/products/detalle-products/detalle-products.component';
+import { IndexMarcasComponent } from './components/administrator/marcas/index-marcas/index-marcas.component';
+import { CreateMarcasComponent } from './components/administrator/marcas/create-marcas/create-marcas.component';
+import { IndexCategoriesComponent } from './components/administrator/categories/index-categories/index-categories.component';
+import { CreateCategoriesComponent } from './components/administrator/categories/create-categories/create-categories.component';
 
 
 const routes: Routes = [
@@ -19,13 +23,20 @@ const routes: Routes = [
     { path: 'dashboard', component: IndexComponent },
     { path: 'products', component: IndexProductsComponent },
     { path: 'products/create', component: CreateProductsComponent },
+    { path: 'products/edit/:id', component: CreateProductsComponent },
     { path: 'products/page/:page', component: IndexProductsComponent },
     { path: 'products/ver/:id', component: DetalleProductsComponent },
 
     { path: 'ventas', component: IndexVentasComponent },
     { path: 'ventas/create', component: CreateVentasComponent },
+    { path: 'ventas/edit/:id', component: CreateVentasComponent },
     { path: 'ventas/detalle/:id', component: DetalleVentasComponent },
 
+    { path: 'marcas', component: IndexMarcasComponent },
+    { path: 'marcas/create', component: CreateMarcasComponent },
+
+    { path: 'categories', component: IndexCategoriesComponent },
+    { path: 'categories/create', component: CreateCategoriesComponent },
 
     {path: '', component: IndexComponent},
 

@@ -123,4 +123,37 @@ export class IndexVentasComponent {
         });
       } 
 
+
+  //cambia el estado de la venta
+  cambiarEstadoCerrada(ventaId: number) {
+    this.ventasService.updateVenta(ventaId, 'Cerrada').subscribe(
+      response => {
+        this.ventas = this.ventas.map((item: Venta) => {
+          if (ventaId === item.id) {
+            item.estado = 'Cerrada';
+          }
+          return item;
+        });
+      }
+      
+     );
+
+  }
+
+  cambiarEstadoPagada(ventaId: number) {
+    this.ventasService.updateVenta(ventaId, 'Pagada').subscribe(
+      response => {
+        this.ventas = this.ventas.map((item: Venta) => {
+          if (ventaId === item.id) {
+            item.estado = 'Pagada';
+          }
+          return item;
+        });
+      }
+      
+     );
+
+  }
+  
+
 }

@@ -25,7 +25,7 @@
                                             <mat-form-field class="example-full-width">
                                                 <mat-label>Precio Envío</mat-label>
                                                 <input [(ngModel)]="venta.envio_precio" matInput type="number"
-                                                    name="nombre" autofocus name="value">
+                                                    name="envio_precio" autofocus name="value">
                                                 <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear"
                                                     (click)="value=''">
                                                     <mat-icon>close</mat-icon>
@@ -129,7 +129,7 @@
                                     <tbody>
                                         <tr *ngFor="let item of venta.dventas">
                                             <td>{{item.producto.nombre}}</td>
-                                            <td>{{item.producto.precio}}</td>
+                                            <td>{{item.producto.precioVenta}}</td>
                                             <td><input type="number" value="{{item.cantidad}}"
                                                     class="form-control col-sm-4"
                                                     (change)="actualizarCantidad(item.producto.id, $event)"></td>
