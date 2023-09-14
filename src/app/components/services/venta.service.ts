@@ -50,6 +50,11 @@ export class VentaService {
     return this._http.put<Venta>('http://localhost:8080/api/ventas/' + ventaId + '/cambiarEstado?nuevoEstado=' + nuevoEstado, {})
 
   }
+
+  //Contar ventas por estado
+  getVentasByEstado():Observable<any>{
+    return this._http.get<any>(this.url+'ventas/contarVentasPorEstado');
+  }
  
   
   

@@ -16,7 +16,7 @@ import { CreateCategoriesComponent } from './components/administrator/categories
 
 
 const routes: Routes = [
-  { path: '', component: AsideComponent, pathMatch: 'full'} ,
+  { path: '', component: IndexComponent, pathMatch: 'full'} ,
   {
   path: 'admin', component: DashboardComponent,
   children: [

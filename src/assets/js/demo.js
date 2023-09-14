@@ -5,7 +5,7 @@ var themeOptionArr = {
 			version: '',
 			layout: '',
 			primary: '',
-			//headerBg: '',
+			
 			navheaderBg: '',
 			sidebarBg: '',
 			sidebarStyle: '',
@@ -186,11 +186,12 @@ function deleteAllCookie(reload = true)
 		primary: "color_15",
 		navheaderBg: "color_15",
 		sidebarBg: "color_15",
-		sidebarStyle: "icon-hover",
+		sidebarStyle: "icon-hover",		   
 		sidebarPosition: "fixed",
 		headerPosition: "fixed",
 		containerLayout: "full",
 	};
+	
 		
 	function themeChange(theme){
 		var themeSettings = {};
@@ -231,15 +232,53 @@ function deleteAllCookie(reload = true)
 				var optionData = getCookie(optionKey);
 				themeOptionArr[optionKey] = (optionData != '')?optionData:dezSettingsOptions[optionKey];
 			});
-			console.log(themeOptionArr);
+			//console.log(themeOptionArr);
 			dezSettingsOptions = themeOptionArr;
 			new dezSettings(dezSettingsOptions);
 			
 			setThemeLogo();
 		}
 	}
+	/*  set switcher option start  */
+	function getElementAttrs(el) {
+	  return [].slice.call(el.attributes).map((attr) => {
+		return {
+		  name: attr.name,
+		  value: attr.value
+		}
+	  });
+	}
+	
+	function handleSetThemeOption(item, index, arr) {
+		var attrName = item.name.replace('data-','').replace('-','_');
+		if(attrName === "sidebarbg" || attrName === "primary"){
+			if(item.value === "color_1"){
+				return false;
+			}
+			var attrNameColor = attrName.replace("bg","")
+			document.getElementById(attrNameColor+"_"+item.value).checked = true;
+		}else if(attrName === "direction" || attrName === "nav_headerbg" || attrName === "headerbg"){
+		}else if(attrName === "sidebar_style" || attrName === "sidebar_position" || attrName === "header_position" || attrName === "typography" || attrName === "theme_version" ){
+			if(item.value === "cairo" || item.value === "full" || item.value === "fixed"|| item.value === "light"){return false}
+			document.getElementById(attrName).value = item.value;				
+		}else if(attrName === "layout"){
+			if(item.value === "vertical"){return false}
+			document.getElementById("theme_layout").value = item.value;		
+		}
+		else if(attrName === "container"){
+			if(item.value === "wide"){return false}
+			document.getElementById("container_layout").value = item.value;				
+		}
+		$('.default-select').niceSelect('update');
+	}
+	
+	/* / set switcher option end / */
 	
 	jQuery(document).on('click', '.dlab_theme_demo', function(){
+		setTimeout(() => {
+			var allAttrs = getElementAttrs(document.querySelector('body'));
+			allAttrs.forEach(handleSetThemeOption);
+		},1500);
 		var demoTheme = jQuery(this).data('theme');
 		themeChange(demoTheme, 'ltr');
 	});
@@ -252,6 +291,10 @@ function deleteAllCookie(reload = true)
 	
 	
 	jQuery(window).on('load', function(){
+		setTimeout(() => {
+			var allAttrs = getElementAttrs(document.querySelector('body'));
+			allAttrs.forEach(handleSetThemeOption);
+		},1500); 
 		//direction = (direction != undefined)?direction:'ltr';
 		if(theme != undefined){
 			themeChange(theme);

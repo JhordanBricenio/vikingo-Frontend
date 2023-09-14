@@ -5,6 +5,7 @@ import { VentaService } from 'src/app/components/services/venta.service';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 
 import Swal from 'sweetalert2';
+import { DVenta } from 'src/app/components/models/d-venta';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -28,13 +29,16 @@ export const MY_DATE_FORMATS = {
 
 export class IndexVentasComponent {
 
-  ventas:Venta[]=[];
-   total = 0;
+  ventas: Venta[] = [];
+  dVentas: Venta[] = [];
+  total = 0;
+  totalGanancia = 0;
+  totalDeudas = 0;
 
   public desde;
   public hasta;
 
-  constructor(private ventasService:VentaService, private modalService:ModalService) { }
+  constructor(private ventasService: VentaService, private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.initData();
@@ -44,10 +48,14 @@ export class IndexVentasComponent {
       this.ventasService.getVentasByFecha().subscribe(
         response => {
           this.ventas = response;
+
           //Mostrar el monton total de las ventas
           this.total = 0;
           this.ventas.forEach((item: Venta) => {
             this.total += item.totalPagar;
+            if (item.estado == 'Pendiente') {
+              this.totalDeudas += item.totalPagar;  
+            }
           });
         }
       );
@@ -82,7 +90,8 @@ export class IndexVentasComponent {
               `Venta ${venta.nventa} Eliminada con éxito.`,
               'success'
             );
-            this.total-=venta.totalPagar;
+            this.total -= venta.totalPagar;
+            this.totalDeudas -= venta.totalPagar;
           });
         }
       });
@@ -96,22 +105,22 @@ export class IndexVentasComponent {
   filtrar() {
     const dt = new Date(this.desde)
     const year = dt.getFullYear()
-    const month = dt.getMonth() +1
-    const day = dt.getDate() 
+    const month = dt.getMonth() + 1
+    const day = dt.getDate()
     const fecha = year + '/' + month + '/' + day
     //Convertir fecha a tipo Date
     const fecha1 = new Date(fecha)
-    
+
 
     const dt2 = new Date(this.hasta)
     const year2 = dt2.getFullYear()
-    const month2 = dt2.getMonth()+1
+    const month2 = dt2.getMonth() + 1
     const day2 = dt2.getDate()
     const fecha2 = year2 + '/' + month2 + '/' + day2
     const fecha3 = new Date(fecha2)
 
 
-    this.ventasService.getVentasByFecha(fecha1,fecha3).subscribe(
+    this.ventasService.getVentasByFecha(fecha1, fecha3).subscribe(
       response => {
         this.ventas = response;
         //Mostrar el monton total de las ventas
@@ -120,10 +129,8 @@ export class IndexVentasComponent {
           this.total += item.totalPagar;
         });
 
-        });
-      } 
-
-
+      });
+  }
   //cambia el estado de la venta
   cambiarEstadoCerrada(ventaId: number) {
     this.ventasService.updateVenta(ventaId, 'Cerrada').subscribe(
@@ -135,8 +142,8 @@ export class IndexVentasComponent {
           return item;
         });
       }
-      
-     );
+
+    );
 
   }
 
@@ -150,10 +157,10 @@ export class IndexVentasComponent {
           return item;
         });
       }
-      
-     );
+
+    );
 
   }
-  
+
 
 }

@@ -5,6 +5,7 @@ export class DVenta {
     cantidad:number=1;
     producto:Product;
     importe: number;
+    ganancia: number;
 
     public calcularImporte():number{
         return this.cantidad*this.producto.precioVenta;

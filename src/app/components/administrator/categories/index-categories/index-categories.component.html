@@ -14,36 +14,52 @@
                     <div class="card-header">
                         <h4 class="card-title">Categorías Registradas</h4>
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped verticle-middle table-responsive-sm">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">Descripción</th>
-                                        <th scope="col">Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let item of categories">
-                                        <td>
-                                            {{item.id}}
-                                        </td>
-                                        <td>{{item.nombre}}</td>
-                                        <td>{{item.Descripcion}}</td>
-                                        <td><span><a  class="me-4" data-bs-toggle="tooltip"
-                                                    data-placement="top" title="Edit"><i
-                                                        class="fas fa-pencil-alt color-muted"></i> </a><a
-                                                    (click)="delete(item)" style="cursor: pointer;"
-                                                    data-bs-toggle="tooltip" data-placement="top" title="btn-close"><i
-                                                        class="fas fa-times color-danger"></i></a></span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div> 
-                    </div>
+
+                    <ng-container *ngIf="categories.length>0">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped verticle-middle table-responsive-sm">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Descripción</th>
+                                            <th scope="col">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of categories">
+                                            <td>
+                                                {{item.id}}
+                                            </td>
+                                            <td>{{item.nombre}}</td>
+                                            <td>{{item.Descripcion}}</td>
+                                            <td><span><a  class="me-4" data-bs-toggle="tooltip"
+                                                        data-placement="top" title="Edit"><i
+                                                            class="fas fa-pencil-alt color-muted"></i> </a><a
+                                                        (click)="delete(item)" style="cursor: pointer;"
+                                                        data-bs-toggle="tooltip" data-placement="top" title="btn-close"><i
+                                                            class="fas fa-times color-danger"></i></a></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> 
+                        </div>
+                    </ng-container>
+                    
+
+                    <ng-container *ngIf="categories.length==0" >
+                        <div class="container">
+                            <div class="alert alert-secondary alert-dismissible fade show" >
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="btn-cerrar" _mstaria-label="130091" _msthash="321">
+                                </button>
+                                <font _mstmutation="1" _msttexthash="760539" _msthash="322"><strong _mstmutation="1"
+                                        _istranslated="1">¡Advertencia!</strong> No hay categorías registradas. </font>
+                            </div>
+                          </div>
+                    </ng-container>
                 </div>
             </div>
         </div>
