@@ -17,6 +17,7 @@ export class DetalleVentasComponent {
   public title:string = 'Detalle de la venta';
   public fotoSeleccionada:File;
   progreso:number = 0;
+  gananciaTotal:number = 0;
 
   constructor(private ventaService:VentaService, private activatedRoute:ActivatedRoute ) { 
 
@@ -38,6 +39,11 @@ export class DetalleVentasComponent {
               this.venta = response;
               console.log(this.venta);
               
+              this.gananciaTotal = 0;
+              this.venta.dventas.forEach(element => {
+                this.gananciaTotal += element.ganancia;
+                               
+              } );
             }
           );
         }

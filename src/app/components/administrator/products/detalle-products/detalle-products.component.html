@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row page-titles">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Tabla</a></li>
+                <li class="breadcrumb-item active"><a [routerLink]="['/admin/products']">Tabla</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Productos</a></li>
             </ol>
         </div>
@@ -45,6 +45,10 @@
                             <tr>
                                 <th scope="row">Stock:</th>
                                 <td>{{ producto.stock }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Cantidad:</th>
+                                <td>{{ producto.cantidad }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">SKU:</th>

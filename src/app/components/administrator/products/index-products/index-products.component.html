@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <div class="row page-titles">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Tabla</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Productos</a></li>
+                <li class="breadcrumb-item active"><a >Tabla</a></li>
+                <li class="breadcrumb-item"><a >Productos</a></li>
             </ol>
         </div>
         <div class="row">
@@ -25,7 +25,7 @@
                             (change)="stateCtrl.disabled ? stateCtrl.enable() : stateCtrl.disable()">
                             Deshabilitar?
                         </mat-slide-toggle>
-                        <button type="submit" (click)="reset()" class="btn btn-dark mt-3">Todos</button>
+                        <button type="submit" (click)="reset()" class="badge badge-lg light badge-danger mt-3">Todos</button>
                     </div>
                     <!-- Aquí puedes agregar el contenido de la tarjeta si es necesario -->
 
@@ -36,9 +36,9 @@
                                     <tr>
                                         <th style="width:80px;"><strong>#</strong></th>
                                         <th><strong>NOMBRE</strong></th>
-                                        <th><strong>PRECIO C</strong></th>
+                                        <th><strong>PRECIO V</strong></th>
                                         <th><strong>STOCK</strong></th>
-                                        <th><strong>FECHA</strong></th>
+                                        <th><strong>CANTIDAD</strong></th>
                                         <th><strong>ESTADO</strong></th>
                                         <th></th>
                                     </tr>
@@ -62,7 +62,7 @@
                                         <td *ngIf="product.stock>2">
                                             {{product.nombre}}
                                         </td>
-                                        <td>{{product.precio}}</td>
+                                        <td>{{product.precioVenta}}.00</td>
 
                                         <td *ngIf="product.stock==0">
                                             <span class="badge light badge-danger">Agotado</span>
@@ -70,7 +70,7 @@
                                         <td *ngIf="product.stock>0">
                                             <span class="badge light badge-primary">{{product.stock}}</span>
                                         </td>
-                                        <td>{{product.createdAt}}</td>
+                                        <td>{{product.cantidad}}</td>
                                         <td *ngIf="product.estado=='ACTIVO'">
                                             <span class="badge light badge-success">{{product.estado}}</span>
                                         </td>
@@ -126,6 +126,22 @@
                 </div>
             </div>
         </div>
+        <div class="row" *ngIf="products.length>0">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 style="margin-bottom: 0px;">Imprimir</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="button" class="badge badge-lg light badge-warning" (click)="imprimir()">Imprimir Reporte</button>
+                            </div>                          
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+    </div>
     </div>
 </div>

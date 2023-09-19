@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/components/models/product';
+import { ImprimirService } from 'src/app/components/services/imprimir.service';
 import { ProductService } from 'src/app/components/services/product.service';
 import Swal from 'sweetalert2';
 
@@ -21,7 +22,8 @@ export class IndexProductsComponent {
 
   public nombre:any;
 
-  constructor(private productService: ProductService, private activateRoute: ActivatedRoute) {
+  constructor(private productService: ProductService, private activateRoute: ActivatedRoute,
+    private imprimirService:ImprimirService) {
 
   }
 
@@ -93,6 +95,21 @@ export class IndexProductsComponent {
 
   reset(){
     this.ngOnInit();
+  }
+
+  imprimir(){
+    this.productService.getAllProducts().subscribe(
+      data => {
+        const ventasArray: any[][] = data.map(product => {
+          return [product.id,product.nombre, product.precio, product.precioVenta,product.stock,product.nventas, product.cantidad, product.estado]; 
+        })
+        const encabezado = ["ID","Nombre", "Precio C", "Precio V","Stock", "NVentas", "Cantidad", "Estado"]; 
+        this.imprimirService.imprimirFactura(encabezado, ventasArray, "Reporte de productos", true);
+      },
+      error => {
+        console.error("Error al obtener datos de ventas: ", error);
+      }
+    );
   }
 
 

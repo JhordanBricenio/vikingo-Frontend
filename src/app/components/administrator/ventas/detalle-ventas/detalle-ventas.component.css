@@ -1,15 +1,25 @@
-.boton{
-    background-color: #FF535B !important;
+.boton {
+  background-color: #ff535b !important;
 }
-.list-group-item-primary{
-    background-color: rgb(76, 163, 245) !important;
-    color: black !important;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    
+.list-group-item-primary {
+  background-color:#030917 !important;
+  color: white !important;
+  font-family: "Croissant One", cursive;
+  font-family: "Mooli", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-.thead{
-    cursor: pointer;
-    background-color:   rgb(76, 163, 245) !important;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.thead {
+  cursor: pointer;
+  color: white !important;
+  background-color:#030917 !important;
+  font-family: "Croissant One", cursive;
+  font-family: "Mooli", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-
+th {
+  color: white !important;
+  background-color:#030917 !important;
+  font-family: "Croissant One", cursive;
+  font-family: "Mooli", sans-serif;
+  font-family: "Roboto", sans-serif;
+}

@@ -6,6 +6,7 @@ import { MAT_DATE_FORMATS } from '@angular/material/core';
 
 import Swal from 'sweetalert2';
 import { DVenta } from 'src/app/components/models/d-venta';
+import { ImprimirService } from 'src/app/components/services/imprimir.service';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -38,7 +39,8 @@ export class IndexVentasComponent {
   public desde;
   public hasta;
 
-  constructor(private ventasService: VentaService, private modalService: ModalService) { }
+  constructor(private ventasService: VentaService, private modalService: ModalService,
+    private imprimirService: ImprimirService) { }
 
   ngOnInit(): void {
     this.initData();
@@ -54,7 +56,7 @@ export class IndexVentasComponent {
           this.ventas.forEach((item: Venta) => {
             this.total += item.totalPagar;
             if (item.estado == 'Pendiente') {
-              this.totalDeudas += item.totalPagar;  
+              this.totalDeudas += item.totalPagar;
             }
           });
         }
@@ -162,5 +164,23 @@ export class IndexVentasComponent {
 
   }
 
+  imprimir() {
 
+    this.ventasService.getAllVentas().subscribe(
+      data => {
+        console.log(data);
+        const ventasArray: any[][] = data.map(venta => {
+          return [venta.id,venta.nota, venta.fecha, venta.totalPagar]; 
+        })
+        const encabezado = ["ID","Cliente", "Fecha", "Total"]; 
+        this.imprimirService.imprimirFactura(encabezado, ventasArray, "Reporte de ventas", true);
+      },
+      error => {
+        console.error("Error al obtener datos de ventas: ", error);
+      }
+    );
+
+
+
+  }
 }

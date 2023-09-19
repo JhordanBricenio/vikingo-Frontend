@@ -2,8 +2,8 @@
   <div class="container-fluid">
     <div class="row page-titles">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active"><a href="javascript:void(0)">Tabla</a></li>
-        <li class="breadcrumb-item"><a href="javascript:void(0)">Ventas</a></li>
+        <li class="breadcrumb-item active"><a  [routerLink]="['/admin/ventas']">Tabla</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/admin/ventas']">Ventas</a></li>
       </ol>
     </div>
 
@@ -16,6 +16,7 @@
         <ul class="list-group my-2">
           <li class="list-group-item list-group-item-primary">Datos de la venta</li>
           <li class="list-group-item">Folio: {{venta.id}}</li>
+          <li class="list-group-item">N° Venta: {{venta.nventa}}</li>
           <li class="list-group-item">Estado: {{venta.estado}}</li>
           <li class="list-group-item">Precio Envío: {{venta.envio_precio}}</li>
           <li class="list-group-item">Fecha: {{venta.fecha| date:"EEEE dd, MMMM yyyy"}}</li>
@@ -37,10 +38,13 @@
               <td>{{item.producto.precioVenta}}</td>
               <td>{{item.cantidad}}</td>
               <td>{{item.importe}}</td>
-              <td>{{item.ganancia}}</td>
+              <td>{{item.ganancia.toFixed(2)}}</td>
             </tr>
           </tbody>
         </table>
+        <h4 class="float-right">
+          <span>Ganancia Total</span>: <span class="badge badge-danger">S/ {{gananciaTotal.toFixed(2)}}.00</span>
+        </h4>
         <h4 class="float-right">
           <span>Gran Total</span>: <span class="badge badge-secondary">S/ {{venta.totalPagar}}.00</span>
         </h4>

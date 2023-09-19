@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <div class="row page-titles">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Tabla</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Ventas</a></li>
+                <li class="breadcrumb-item active"><a >Tabla</a></li>
+                <li class="breadcrumb-item"><a >Ventas</a></li>
             </ol>
         </div>
         <!-- row -->
@@ -121,5 +121,22 @@
                 </div>
             </div>
         </div>
+        <!-- Imprimir -->
+        <div class="row" *ngIf="ventas.length>0">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 style="margin-bottom: 0px;">Imprimir</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="button" class="badge badge-lg light badge-warning" (click)="imprimir()">Imprimir Reporte</button>
+                            </div>                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+
     </div>
 </div>
