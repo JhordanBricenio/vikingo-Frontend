@@ -8,23 +8,12 @@ import Swal from 'sweetalert2';
 import { DVenta } from 'src/app/components/models/d-venta';
 import { ImprimirService } from 'src/app/components/services/imprimir.service';
 
-export const MY_DATE_FORMATS = {
-  parse: {
-    dateInput: 'LL',
-  },
-  display: {
-    dateInput: 'DD/MM/YYYY',
-    monthYearLabel: 'MM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-}
+
 
 @Component({
   selector: 'app-index-ventas',
   templateUrl: './index-ventas.component.html',
-  styleUrls: ['./index-ventas.component.css'],
-  providers: [{ provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }],
+  styleUrls: ['./index-ventas.component.css']
 })
 
 
@@ -165,22 +154,60 @@ export class IndexVentasComponent {
   }
 
   imprimir() {
-
     this.ventasService.getAllVentas().subscribe(
-      data => {
-        console.log(data);
-        const ventasArray: any[][] = data.map(venta => {
-          return [venta.id,venta.nota, venta.fecha, venta.totalPagar]; 
-        })
-        const encabezado = ["ID","Cliente", "Fecha", "Total"]; 
+      data => {  
+        const ventasPagadas = data.filter(venta => venta.estado === 'Pagada');
+        const ventasPendientes = data.filter(venta => venta.estado === 'Pendiente');
+        
+        const gananciaTotalPagadas = ventasPagadas.reduce((total, venta) => {
+          const gananciaVenta = venta.dventas.reduce((ganancia, dventas) => ganancia + dventas.ganancia, 0);
+           return total + gananciaVenta;
+        }, 0);
+  
+        const gananciaTotalPendientes = ventasPendientes.reduce((total, venta) => {
+          const gananciaVenta = venta.dventas.reduce((ganancia, dventas) => ganancia + dventas.ganancia, 0);
+          return total + gananciaVenta;
+        }, 0);
+  
+        
+
+        const totalVentas = data.reduce((total, venta) => {
+          if (venta.estado !== 'Cerrada') {
+            return total + venta.totalPagar;
+          }
+          return total;
+        }, 0);
+        
+        const totalDeudas = ventasPendientes.reduce((total, venta) => total + venta.totalPagar, 0);
+  
+        const ventasArray = data.map(venta => [venta.id, venta.nota, venta.fecha, venta.totalPagar,venta.estado, venta.dventas.reduce((ganancia, dventas) => ganancia + dventas.ganancia, 0)]);
+        const encabezado = ["ID", "Cliente", "Fecha", "Total", "Estado", "Ganancia"];
+
+        const totalInversion=totalVentas-( gananciaTotalPagadas + gananciaTotalPendientes);
+  
+        ventasArray.push(["", "", "", "Ganancia Total Pagada", gananciaTotalPagadas]);
+        ventasArray.push(["", "", "", "Ganancia Total Pendiente", gananciaTotalPendientes]);
+        ventasArray.push(["", "", "", "Total Deudas", totalDeudas]);
+        ventasArray.push(["", "", "", "Total Inversión", totalInversion]);
+        ventasArray.push(["", "", "", "Total Ventas", totalVentas]);
+  
         this.imprimirService.imprimirFactura(encabezado, ventasArray, "Reporte de ventas", true);
-      },
-      error => {
-        console.error("Error al obtener datos de ventas: ", error);
       }
     );
-
-
-
   }
+
+  imprimirGeneral(){
+    this.ventasService.getAllVentas().subscribe(
+      data => { 
+        
+        const totalVentas = data.reduce((total, venta) => {return total+venta.totalPagar}, 0);
+  
+        const ventasArray = data.map(venta => [venta.id, venta.nota, venta.fecha, venta.totalPagar,venta.estado]);
+        const encabezado = ["ID", "Cliente", "Fecha", "Total", "Estado"];
+        ventasArray.push(["", "", "", "Total Ventas", totalVentas]);
+        this.imprimirService.imprimirFactura(encabezado, ventasArray, "Reporte de ventas", true);
+      }
+    );
+  }
+  
 }

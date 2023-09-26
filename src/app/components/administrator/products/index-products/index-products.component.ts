@@ -101,15 +101,21 @@ export class IndexProductsComponent {
     this.productService.getAllProducts().subscribe(
       data => {
         const ventasArray: any[][] = data.map(product => {
-          return [product.id,product.nombre, product.precio, product.precioVenta,product.stock,product.nventas, product.cantidad, product.estado]; 
+          return [
+            product.id,
+            product.nombre, 
+            product.precio, 
+            product.precioVenta,
+            product.stock,
+            product.nventas,
+             product.cantidad, 
+             product.estado]; 
         })
-        const encabezado = ["ID","Nombre", "Precio C", "Precio V","Stock", "NVentas", "Cantidad", "Estado"]; 
+        const totalRegistro= ventasArray.length;
+        const encabezado = ["ID","Nombre", "Precio C", "Precio V","Stock", "NVentas", "Cantidad", "Estado"];
+        ventasArray.push(["", "","Total de registros: "+totalRegistro]); 
         this.imprimirService.imprimirFactura(encabezado, ventasArray, "Reporte de productos", true);
-      },
-      error => {
-        console.error("Error al obtener datos de ventas: ", error);
-      }
-    );
+      });
   }
 
 
