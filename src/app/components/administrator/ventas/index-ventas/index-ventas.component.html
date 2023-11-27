@@ -16,9 +16,9 @@
                     </div>
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
-                                    <mat-form-field>
+                                    <mat-form-field class="example-full-width">
                                         <mat-label>Desde</mat-label>
                                         <input name="desde" [(ngModel)]="desde" matInput [matDatepicker]="pickerr">
                                         <mat-hint>DD/MM/YYYY</mat-hint>
@@ -28,9 +28,9 @@
 
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
-                                    <mat-form-field>
+                                    <mat-form-field class="example-full-width">
                                         <mat-label>Hasta</mat-label>
                                         <input name="hasta" [(ngModel)]="hasta" matInput [matDatepicker]="picker">
                                         <mat-hint>DD/MM/YYYY</mat-hint>
@@ -87,7 +87,7 @@
                                             <td><span><a class="me-4" data-bs-toggle="tooltip"
                                                         data-placement="top" title="Edit"><i
                                                             class="fas fa-pencil-alt color-muted"></i> </a><a
-                                                        (click)="delete(item)" style="cursor: pointer;"
+                                                            *ngIf="authservice.hasRole('ROLE_ADMIN')"   (click)="delete(item)" style="cursor: pointer;"
                                                         data-bs-toggle="tooltip" data-placement="top" title="btn-close"><i
                                                             class="fas fa-times color-danger"></i></a></span>
                                             </td>

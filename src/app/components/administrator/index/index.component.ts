@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { VentaService } from '../../services/venta.service';
+import { VentaService } from '../../../services/venta.service';
 
 @Component({
   selector: 'app-index',

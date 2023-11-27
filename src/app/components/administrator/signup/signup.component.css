@@ -1,0 +1,17 @@
+.btn-primary {
+    outline: none;
+    background-color: #FF535B !important;
+    border: 0.1px solid #FF535B !important;
+    border-radius: 1rem;
+    color: #fff !important;
+    box-shadow: 0 3px 5px 0 rgb(255 83 91 / 30%);
+
+}
+.title{
+    font-size: 25px;
+    margin-top: 3rem;
+}
+.image{
+    width: 500px;
+}
+

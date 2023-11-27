@@ -9,7 +9,7 @@ export class Product {
     precio: number;
     precioVenta: number;
     imagen: string;
-    stock: string;
+    stock: number;
     sku: string;
     estado: string;
     createdAt: string;

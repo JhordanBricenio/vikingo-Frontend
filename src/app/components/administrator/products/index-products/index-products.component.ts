@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/components/models/product';
-import { ImprimirService } from 'src/app/components/services/imprimir.service';
-import { ProductService } from 'src/app/components/services/product.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { ImprimirService } from 'src/app/services/imprimir.service';
+import { ProductService } from 'src/app/services/product.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -23,7 +24,7 @@ export class IndexProductsComponent {
   public nombre:any;
 
   constructor(private productService: ProductService, private activateRoute: ActivatedRoute,
-    private imprimirService:ImprimirService) {
+    private imprimirService:ImprimirService, public authService:AuthService) {
 
   }
 
@@ -39,6 +40,7 @@ export class IndexProductsComponent {
       }
       this.productService.getProyectsBySearch(page).subscribe((response) => {
         this.products = response.content as Product[];
+        
         this.pagination = response;        
       });
     });
@@ -101,6 +103,8 @@ export class IndexProductsComponent {
     this.productService.getAllProducts().subscribe(
       data => {
         const ventasArray: any[][] = data.map(product => {
+          const montoInvertido = product.precio * product.stock; // Calcula el monto invertido
+          
           return [
             product.id,
             product.nombre, 
@@ -109,11 +113,20 @@ export class IndexProductsComponent {
             product.stock,
             product.nventas,
              product.cantidad, 
-             product.estado]; 
+             product.estado,
+             montoInvertido,
+              
+            ];
+            
+
         })
+
+        const totalMontoInvertido = ventasArray.reduce((acc, curr) => acc + curr[8], 0);
+    
         const totalRegistro= ventasArray.length;
         const encabezado = ["ID","Nombre", "Precio C", "Precio V","Stock", "NVentas", "Cantidad", "Estado"];
-        ventasArray.push(["", "","Total de registros: "+totalRegistro]); 
+        ventasArray.push(["", "", "Total: " + totalRegistro, "", "", "", totalMontoInvertido]);       
+
         this.imprimirService.imprimirFactura(encabezado, ventasArray, "Reporte de productos", true);
       });
   }

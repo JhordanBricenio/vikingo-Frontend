@@ -13,6 +13,10 @@
                     <table class="table table-bordered table-striped">
                         <tbody>
                             <tr>
+                                <th scope="row">ID:</th>
+                                <td>{{ producto.id }}</td>
+                            </tr>
+                            <tr>
                                 <th scope="row">Nombre:</th>
                                 <td>{{ producto.nombre }}</td>
                             </tr>
@@ -88,7 +92,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <img *ngIf="producto?.imagen" src="http://localhost:8080/api/producto/upload/img/{{ producto.imagen }}"
+                <img *ngIf="producto?.imagen" src="http://localhost:9090/api/producto/upload/img/{{ producto.imagen }}"
                     alt="{{ producto.imagen }}" class="img-thumbnail rounded" style="max-width: 500px; margin: 30px auto;">
             </div>
         </div>

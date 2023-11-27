@@ -45,6 +45,10 @@ import { IndexMarcasComponent } from './components/administrator/marcas/index-ma
 import { CreateMarcasComponent } from './components/administrator/marcas/create-marcas/create-marcas.component';
 import { IndexCategoriesComponent } from './components/administrator/categories/index-categories/index-categories.component';
 import { CreateCategoriesComponent } from './components/administrator/categories/create-categories/create-categories.component';
+import { SignupComponent } from './components/administrator/signup/signup.component';
+import { ContactComponent } from './components/Inicio/contact/contact.component';
+import { ProfileComponent } from './components/administrator/profile/profile.component';
+import { RegisterComponent } from './components/administrator/register/register.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +66,11 @@ import { CreateCategoriesComponent } from './components/administrator/categories
     IndexMarcasComponent,
     CreateMarcasComponent,
     IndexCategoriesComponent,
-    CreateCategoriesComponent
+    CreateCategoriesComponent,
+    SignupComponent,
+    ContactComponent,
+    ProfileComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

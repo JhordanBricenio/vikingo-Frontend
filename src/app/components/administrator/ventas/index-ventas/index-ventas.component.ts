@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { Venta } from 'src/app/components/models/venta';
-import { ModalService } from 'src/app/components/services/modal.service';
-import { VentaService } from 'src/app/components/services/venta.service';
+import { ModalService } from 'src/app/services/modal.service';
+import { VentaService } from 'src/app/services/venta.service';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 
 import Swal from 'sweetalert2';
 import { DVenta } from 'src/app/components/models/d-venta';
-import { ImprimirService } from 'src/app/components/services/imprimir.service';
+import { ImprimirService } from 'src/app/services/imprimir.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 
@@ -28,7 +29,7 @@ export class IndexVentasComponent {
   public desde;
   public hasta;
 
-  constructor(private ventasService: VentaService, private modalService: ModalService,
+  constructor(private ventasService: VentaService,public authservice:AuthService,
     private imprimirService: ImprimirService) { }
 
   ngOnInit(): void {
@@ -124,6 +125,7 @@ export class IndexVentasComponent {
   }
   //cambia el estado de la venta
   cambiarEstadoCerrada(ventaId: number) {
+    if(this.authservice.hasRole('ROLE_ADMIN')){
     this.ventasService.updateVenta(ventaId, 'Cerrada').subscribe(
       response => {
         this.ventas = this.ventas.map((item: Venta) => {
@@ -135,6 +137,9 @@ export class IndexVentasComponent {
       }
 
     );
+    }else{
+      Swal.fire('Error', 'No tienes permiso para realizar esta acción', 'error');
+    }
 
   }
 

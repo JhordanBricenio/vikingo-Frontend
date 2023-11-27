@@ -2,7 +2,7 @@ import { HttpEventType } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/components/models/product';
-import { ProductService } from 'src/app/components/services/product.service';
+import { ProductService } from 'src/app/services/product.service';
 import Swal from 'sweetalert2';
 
 @Component({

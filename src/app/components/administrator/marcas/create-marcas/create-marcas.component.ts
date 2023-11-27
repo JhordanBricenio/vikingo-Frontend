@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Marca } from 'src/app/components/models/marca';
-import { MarcaService } from 'src/app/components/services/marca.service';
+import { MarcaService } from 'src/app/services/marca.service';
 import Swal from 'sweetalert2';
 
 @Component({

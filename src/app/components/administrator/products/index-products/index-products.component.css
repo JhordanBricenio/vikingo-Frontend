@@ -11,3 +11,16 @@
     display: block; 
   }
   
+/* Estilos generales */
+.card-header {
+  padding: 15px;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  .card-header {
+      padding: 10px;
+  }
+  
+  /* Agrega más estilos específicos para dispositivos móviles según sea necesario */
+}

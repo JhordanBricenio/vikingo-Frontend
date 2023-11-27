@@ -13,10 +13,15 @@ import { IndexMarcasComponent } from './components/administrator/marcas/index-ma
 import { CreateMarcasComponent } from './components/administrator/marcas/create-marcas/create-marcas.component';
 import { IndexCategoriesComponent } from './components/administrator/categories/index-categories/index-categories.component';
 import { CreateCategoriesComponent } from './components/administrator/categories/create-categories/create-categories.component';
+import { SignupComponent } from './components/administrator/signup/signup.component';
+import { ProfileComponent } from './components/administrator/profile/profile.component';
+import { RegisterComponent } from './components/administrator/register/register.component';
 
 
 const routes: Routes = [
-  { path: '', component: IndexComponent, pathMatch: 'full'} ,
+  { path: '', component: SignupComponent, pathMatch: 'full'} ,
+  { path: 'usuario/register', component: RegisterComponent, pathMatch: 'full'} ,
+
   {
   path: 'admin', component: DashboardComponent,
   children: [
@@ -38,37 +43,18 @@ const routes: Routes = [
     { path: 'categories', component: IndexCategoriesComponent },
     { path: 'categories/create', component: CreateCategoriesComponent },
 
+    
+    { path: 'profile/:id', component: ProfileComponent },
+
     {path: '', component: IndexComponent},
+    
 
   
-  ]}];
- /* { path: '', component: InicioComponent, pathMatch: 'full' },
-  { path: 'nosotros', component: NosotrosComponent, pathMatch: 'full' },
-  { path: 'eventos', component: EventosComponent, pathMatch: 'full' },
-  { path: 'talleres', component: WorkshopComponent, pathMatch: 'full' },
-  { path: 'docentes', component: DocentesComponent },
-  { path: 'blog', component: BlogComponent, pathMatch: 'full' },
-  { path: 'contactanos', component: ContactanosComponent, pathMatch: 'full' },
-  {
-    path: 'admin', component: DashboardComponent,
-    children: [
-      { path: 'dashboard', component: IndexAlumnosComponent },
-      { path: 'degrees', component: DegreeComponent },
-      { path: 'courses', component: CoursesComponent },
-      { path: 'courses/:id', component: CoursesComponent },
-      { path: 'course/:id', component: IndexAlumnosComponent },
+  ]},
+  { path: 'signup', component: SignupComponent }
 
-      { path: 'alumnos', component: IndexAumnosCrudComponent },
-      { path: 'alum/create', component: CreateAlumnosComponent },
-      { path: 'alumnos/edit/:id', component: CreateAlumnosComponent },/*
-
-
-
-
-     // { path: '', component:WelcomeComponent}
-    ]
-    }/*
-*/
+];
+ 
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

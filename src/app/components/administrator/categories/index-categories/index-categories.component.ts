@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Categoria } from 'src/app/components/models/categoria';
-import { CategoriaService } from 'src/app/components/services/categoria.service';
+import { CategoriaService } from 'src/app/services/categoria.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -20,6 +20,8 @@ export class IndexCategoriesComponent {
     this.categoriasService.getAllCategories().subscribe(
       response => {
         this.categories = response;
+        console.log(this.categories);
+        
       }
     ); 
   }

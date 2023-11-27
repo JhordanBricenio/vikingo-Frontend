@@ -7,7 +7,7 @@ import { Observable, flatMap, map, startWith } from 'rxjs';
 import { DVenta } from 'src/app/components/models/d-venta';
 import { Product } from 'src/app/components/models/product';
 import { Venta } from 'src/app/components/models/venta';
-import { VentaService } from 'src/app/components/services/venta.service';
+import { VentaService } from 'src/app/services/venta.service';
 import Swal from 'sweetalert2';
 
 interface MetodoPago {
@@ -88,7 +88,7 @@ export class CreateVentasComponent {
   seleccionarProducto(event: MatAutocompleteSelectedEvent): void {
     let producto = event.option.value as Product;
     console.log(producto);
-    const stockNumero = parseFloat(producto.stock);
+    const stockNumero = producto.stock;
     if (stockNumero <= 0) {
       // Muestra una alerta con SweetAlert
       Swal.fire({
@@ -121,7 +121,7 @@ export class CreateVentasComponent {
     }
     //Si la cantidad es mayor al stock
     let producto = this.venta.dventas.filter((item: DVenta) => id === item.producto.id)[0];
-    const stockNumero = parseFloat(producto.producto.stock);
+    const stockNumero = producto.producto.stock;
     if (cantidad > stockNumero) {
       Swal.fire({
         icon: 'error',

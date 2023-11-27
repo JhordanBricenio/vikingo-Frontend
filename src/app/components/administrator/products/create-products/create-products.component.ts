@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Categoria } from 'src/app/components/models/categoria';
 import { Marca } from 'src/app/components/models/marca';
 import { Product } from 'src/app/components/models/product';
-import { CategoriaService } from 'src/app/components/services/categoria.service';
-import { MarcaService } from 'src/app/components/services/marca.service';
-import { ProductService } from 'src/app/components/services/product.service';
+import { CategoriaService } from 'src/app/services/categoria.service';
+import { MarcaService } from 'src/app/services/marca.service';
+import { ProductService } from 'src/app/services/product.service';
 
 import Swal from 'sweetalert2';
 

@@ -10,23 +10,31 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <!-- Filtros -->
-                        <h3 class="text-uppercase">Filtros</h3>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Producto</mat-label>
-                            <input matInput name="filtro" [(ngModel)]="nombre" placeholder="Buscar por nombre..."
-                                aria-label="State" [formControl]="stateCtrl">
-                            <mat-icon *ngIf="nombre"
-                                style="border:none ; background:none; cursor: pointer; position: absolute;"
-                                (click)="filtrar()">search</mat-icon>
-                        </mat-form-field>
-                        <br>
-                        <mat-slide-toggle [checked]="stateCtrl.disabled"
-                            (change)="stateCtrl.disabled ? stateCtrl.enable() : stateCtrl.disable()">
-                            Deshabilitar?
-                        </mat-slide-toggle>
-                        <button type="submit" (click)="reset()" class="badge badge-lg light badge-danger mt-3">Todos</button>
+                        <h5 style="margin-bottom: 0px;">Filtro de ventas</h5>
                     </div>
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Producto</mat-label>
+                                    <input matInput name="filtro" [(ngModel)]="nombre" placeholder="Buscar por nombre..."
+                                        aria-label="State" [formControl]="stateCtrl">
+                                    <mat-icon *ngIf="nombre" style="border:none; background:none; cursor: pointer; position: absolute;"
+                                        (click)="filtrar()">search</mat-icon>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-slide-toggle [checked]="stateCtrl.disabled"
+                                    (change)="stateCtrl.disabled ? stateCtrl.enable() : stateCtrl.disable()">
+                                    Deshabilitar?
+                                </mat-slide-toggle>
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <button type="submit" (click)="reset()" class="badge badge-lg light badge-danger">Todos</button>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <!-- Aquí puedes agregar el contenido de la tarjeta si es necesario -->
 
                     <div class="card-body">
@@ -48,10 +56,10 @@
                                         <td>
                                             <div class="imagen">
                                                 <img  *ngIf="product?.imagen"
-                                                    src="http://localhost:8080/api/producto/upload/img/{{product.imagen}}"
+                                                    src="http://localhost:9090/api/producto/upload/img/{{product.imagen}}"
                                                     alt="...">
                                                 <img  *ngIf="!product?.imagen"
-                                                    src="http://localhost:8080/api/producto/upload/img/nofoto.jpg"
+                                                    src="http://localhost:9090/api/producto/upload/img/nofoto.jpg"
                                                     alt="...">
                                             </div>
                                         </td>
@@ -94,9 +102,9 @@
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item"
                                                         [routerLink]="['/admin/products/ver', product.id]">Ver</a>
-                                                    <a class="dropdown-item"
+                                                    <a *ngIf="authService.hasRole('ROLE_ADMIN')" class="dropdown-item" 
                                                         [routerLink]="['/admin/products/edit',product.id]">Editar</a>
-                                                    <a class="dropdown-item" style="cursor: pointer;"
+                                                    <a *ngIf="authService.hasRole('ROLE_ADMIN')" class="dropdown-item" style="cursor: pointer;"
                                                         (click)="delete(product)">Eliminar</a>
                                                 </div>
                                             </div>

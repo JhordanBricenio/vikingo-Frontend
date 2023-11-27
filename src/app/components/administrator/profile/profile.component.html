@@ -1,0 +1,235 @@
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Usuario</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Perfil</a></li>
+            </ol>
+        </div>
+        <!-- row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="profile card card-body px-3 pt-3 pb-0">
+                    <div class="profile-head">
+                        <div class="photo-content">
+                            <div class="cover-photo rounded"></div>
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-photo">
+                                <img img *ngIf="usuario?.foto" src="http://localhost:9090/api/producto/upload/img/{{ usuario.foto }}"
+                                 class="img-fluid rounded-circle" alt="">
+                            </div>
+                            <div class="profile-details">
+                                <div class="profile-name px-3 pt-2">
+                                    <h4 class="text-primary mb-0">{{usuario.nombres}}</h4>
+                                    <p>Desarrollador de Software</p>
+                                </div>
+                                <div class="profile-email px-2 pt-2">
+                                    <h4 class="text-muted mb-0">{{usuario.email}}</h4>
+                                    <p>Email</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-4">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="profile-statistics">
+                                    <div class="text-center">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h3 class="m-b-0">150</h3><span>Follower</span>
+                                            </div>
+                                            <div class="col">
+                                                <h3 class="m-b-0">140</h3><span>Place Stay</span>
+                                            </div>
+                                            <div class="col">
+                                                <h3 class="m-b-0">45</h3><span>Reseñas</span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4">
+                                            <a href="javascript:void(0);" class="btn btn-primary mb-1 me-1">Follow</a> 
+                                            <a href="javascript:void(0);" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#sendMessageModal">Enviar Mensaje</a>
+                                        </div>
+                                    </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="sendMessageModal">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Enviar Mensaje</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="comment-form">
+                                                        <div class="row"> 
+                                                            <div class="col-lg-6">
+                                                                <div class="mb-3">
+                                                                    <label class="text-black font-w600 form-label">Nombre <span class="required">*</span></label>
+                                                                    <input type="text" class="form-control"  name="Author" placeholder="Nombre">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="mb-3">
+                                                                    <label class="text-black font-w600 form-label">Asunto <span class="required">*</span></label>
+                                                                    <input type="text" class="form-control"  placeholder="Asunto" name="Email">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="mb-3">
+                                                                    <label class="text-black font-w600 form-label">Contenido</label>
+                                                                    <textarea rows="8" class="form-control" name="comment" placeholder="Contenido"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="mb-3 mb-0">
+                                                                    <input type="submit" value="Post Comment" class="submit btn btn-primary" name="submit">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="profile-blog">
+                                    <h5 class="text-primary d-inline">Today Highlights</h5>
+                                    <img src="images/profile/1.jpg" alt="" class="img-fluid mt-4 mb-4 w-100">
+                                    <h4><a href="post-details.html" class="text-black">Darwin Creative Agency Theme</a></h4>
+                                    <p class="mb-0">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="profile-tab">
+                            <div class="custom-tab-1">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item"><a href="#my-posts" data-bs-toggle="tab" class="nav-link active show">Actualizar</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div id="my-posts" class="tab-pane fade active show">
+                                        <div class="my-post-content pt-3">
+                                            <div class="post-input">
+                                                <a href="javascript:void(0);" class="btn btn-primary light me-1 px-3" data-bs-toggle="modal" data-bs-target="#linkModal"><i class="fa fa-link m-0"></i> </a>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="linkModal">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Redes Sociales</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <a class="btn-social facebook" href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
+                                                                <a class="btn-social google-plus" href="javascript:void(0)"><i class="fab fa-google-plus-g"></i></a>
+                                                                <a class="btn-social linkedin" href="javascript:void(0)" ><i class="fab fa-linkedin"></i></a>
+                                                                <a class="btn-social instagram" href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                                                                <a class="btn-social twitter" href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+                                                                <a class="btn-social youtube" href="javascript:void(0)"><i class="fab fa-youtube"></i></a>
+                                                                <a class="btn-social whatsapp" href="https://api.whatsapp.com/send?phone=51963006126"><i class="fab fa-whatsapp"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a href="javascript:void(0);" class="btn btn-primary light me-1 px-3" data-bs-toggle="modal" data-bs-target="#cameraModal"><i class="fa fa-camera m-0"></i> </a>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="cameraModal">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Subir imágen</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="input-group mb-3">
+                                                                    <span class="input-group-text">Cargar</span>
+                                                                    <div class="form-file">
+                                                                        <input  (change)="seleccionarFoto($event)" type="file" class="form-file-input form-control">
+                                                                    </div>
+                                                                    <button (click)="subirFoto()" [disabled]="!fotoSeleccionada" class="btn btn-outline-secondary"
+                            type="button" id="inputGroupFileAddon04">Subir</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a href="javascript:void(0);" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#postModal">Post</a>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="postModal">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Post</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                 <textarea name="textarea" id="textarea2" cols="30" rows="5" class="form-control bg-transparent" placeholder="Please type what you want...."></textarea>
+                                                                 <a class="btn btn-primary btn-rounded" href="javascript:void(0)">Post</a>																		 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="profile-uoloaded-post border-bottom-1 pb-5">
+                                                <img src="images/profile/8.jpg" alt="" class="img-fluid w-100 rounded">
+                                                <a class="post-title" href="post-details.html"><h3 class="text-black">Collection of textile samples lay spread</h3></a>
+                                                <p>A wonderful serenity has take possession of my entire soul like these sweet morning of spare which enjoy whole heart.A wonderful serenity has take possession of my entire soul like these sweet morning
+                                                    of spare which enjoy whole heart.</p>
+                                                <button class="btn btn-primary me-2"><span class="me-2"><i
+                                                            class="fa fa-heart"></i></span>Like</button>
+                                                <button class="btn btn-secondary"  data-bs-toggle="modal" data-bs-target="#replyModal"><span class="me-2"><i
+                                                            class="fa fa-reply"></i></span>Reply</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="replyModal">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Post Reply</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <textarea class="form-control" rows="4">Message</textarea>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">btn-close</button>
+                                            <button type="button" class="btn btn-primary">Reply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

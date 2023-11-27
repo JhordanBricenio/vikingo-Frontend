@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Categoria } from 'src/app/components/models/categoria';
-import { CategoriaService } from 'src/app/components/services/categoria.service';
+import { CategoriaService } from 'src/app/services/categoria.service';
 import Swal from 'sweetalert2';
 
 @Component({

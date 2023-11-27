@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Venta } from 'src/app/components/models/venta';
-import { ModalService } from 'src/app/components/services/modal.service';
+import { ModalService } from 'src/app/services/modal.service';
 import {  Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { VentaService } from 'src/app/components/services/venta.service';
+import { VentaService } from 'src/app/services/venta.service';
 
 @Component({
   selector: 'app-detalle-ventas',
