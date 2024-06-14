@@ -86,8 +86,7 @@ export class CreateVentasComponent {
     return producto ? producto.nombre : undefined;
   }
   seleccionarProducto(event: MatAutocompleteSelectedEvent): void {
-    let producto = event.option.value as Product;
-    console.log(producto);
+    let producto = event.option.value as Product; 
     const stockNumero = producto.stock;
     if (stockNumero <= 0) {
       // Muestra una alerta con SweetAlert
@@ -96,9 +95,10 @@ export class CreateVentasComponent {
         title: 'Stock Insuficiente',
         text: 'No puedes agregar un producto con stock igual o menor a cero.',
       });
-      this.autocompleteControl.setValue('');
+      this.resetAutocomplete();
       return;
     }
+  
     if (this.existeItem(producto.id)) {
       this.incrementaCantidad(producto.id);
     } else {
@@ -106,13 +106,14 @@ export class CreateVentasComponent {
       nuevoItem.producto = producto;
       this.venta.dventas.push(nuevoItem);
     }
-
-    this.autocompleteControl.setValue('');
-    event.option.focus();
-    event.option.deselect();
-
+  
+    this.resetAutocomplete();
   }
-
+  
+  private resetAutocomplete(): void {
+    this.autocompleteControl.setValue('');
+  }
+  
   actualizarCantidad(id: number, event: any): void {
     let cantidad: number = event.target.value as number;
 

@@ -40,9 +40,9 @@ export class SignupComponent {
       this.snack.open('Email o password incorrectos', 'AVISO', {duration: 2000});
       return;
     }
-    this.authService.login(this.usuario).subscribe(response => {
-      this.authService.guardarUsuario(response.token);
-      this.authService.guardarToken(response.token);
+    this.authService.login(this.usuario).subscribe(response => {   
+      this.authService.guardarUsuario(response.jwt);
+      this.authService.guardarToken(response.jwt);
       let usuario = this.authService.usuario;
       this.router.navigate(['/admin']);
       Swal.fire('Login', `Hola ${usuario.email.slice(0,7)}, has iniciado sesión con éxito!`, 'success');

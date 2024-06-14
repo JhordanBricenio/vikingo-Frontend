@@ -144,6 +144,7 @@
                                             <td><span class="fs-16 text-black font-w600">+S/ {{item.totalPagar}}.00</span></td>
                                             <td *ngIf="item.estado=='Pagada'"><span class="text-success fs-16 font-w500 text-end d-block">{{item.estado}}</span></td>
                                             <td *ngIf="item.estado=='Pendiente'"><span class="text-danger fs-16 font-w500 text-end d-block">{{item.estado}}</span></td>
+                                            <td *ngIf="item.estado=='Cerrada'"><span class="text-secondary fs-16 font-w500 text-end d-block">{{item.estado}}</span></td>
                                         </tr>
                                     </tbody>
                                 </table>

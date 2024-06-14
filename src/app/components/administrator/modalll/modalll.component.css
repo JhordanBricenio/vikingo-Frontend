@@ -1,0 +1,620 @@
+:host,
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  flex-shrink: 0;
+  text-decoration: none;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+:host,
+:not(span, a, ul, ol, li, p) {
+  display: flex;
+}
+
+ul,
+ol {
+  text-indent: 0;
+  padding-inline-start: 1.5em;
+}
+
+p:empty::before {
+  content: '';
+  display: inline-block;
+}
+
+img {
+  object-fit: contain;
+}
+
+svg {
+  overflow: visible;
+}
+
+:host {
+  width: 1440px;
+  height: 875.59px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 96px;
+  padding: 120px 118px 5315.3984px;
+  background-color: #121316;
+}
+.divCss1g7zkn {
+  position: relative;
+  width: 1204px;
+  height: 99.59px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.linkChakraButton {
+  position: absolute;
+  left: 1108.0156px;
+  top: 60.7734px;
+  width: 94.76px;
+  height: 38.82px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 9999px;
+  background-color: #fafafc26;
+}
+.pipeBlog {
+  color: #fff;
+  font-size: 12.7px;
+  line-height: 22.992px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: 0.1px;
+  position: absolute;
+  left: 18.0781px;
+  top: 7.418px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.divCss {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 841.58px;
+  height: 99.59px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24.3453px;
+  padding: 0 378.711px 5773.0078px 0;
+}
+.resources {
+  color: #84889a;
+  font-size: 11.2px;
+  line-height: 13.2px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.paragraphChakraText {
+  width: 462.87px;
+  height: 62.4px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 33.7108px 5841.3936px 0;
+}
+.discoverToolsAndInsightsToHelp {
+  color: #fff;
+  font-size: 23.1px;
+  line-height: 31.2px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: 0.1px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.runFinanceAndGrowYourBusiness {
+  color: #fff;
+  font-size: 23.1px;
+  line-height: 31.2px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: 0.1px;
+  width: min-content;
+  height: min-content;
+  margin: 0px 0px 0px -0.004688262939453125px;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.divSwiperWrapper1b7ff7e25dddb8 {
+  width: 1204px;
+  height: 400px;
+  align-items: flex-start;
+  gap: 16px;
+}
+.divCss1my8j5i {
+  position: relative;
+  width: 289px;
+  height: 345.65px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 12px;
+  background-color: #25262d;
+  overflow: hidden;
+}
+.divCss1wd9bp4 {
+  position: absolute;
+  left: 5.3203px;
+  top: 5.3203px;
+  width: 278.36px;
+  height: 335px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 0 5986.1704px;
+}
+.divCss8z40su {
+  position: relative;
+  width: 278.36px;
+  height: 255px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 9.4px;
+  overflow: hidden;
+}
+.imageCssFcdwcq {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 278.36px;
+  height: 253.74px;
+  flex-direction: column;
+  background-image: url('/assets/imageCssFcdwcq.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  overflow: hidden;
+}
+.divCssJ9p0nx {
+  width: 278.36px;
+  height: 80px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 14.9297px 8px 6268.332px;
+}
+.paragraphChakraText2 {
+  width: 262.36px;
+  height: 48.6px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 19.734px 6281.9346px 0;
+}
+.howToUtilizeBusinessLoans {
+  color: #fff;
+  font-size: 17.3px;
+  line-height: 24.3px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: 0.1px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.forExpansion {
+  color: #fff;
+  font-size: 17.3px;
+  line-height: 24.3px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: 0.1px;
+  width: min-content;
+  height: min-content;
+  margin: 0px 0px 0px -0.003124237060546875px;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.linkChakraButton2 {
+  position: relative;
+  width: 106.97px;
+  height: 38.82px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 9999px;
+  background-color: #fafafc26;
+}
+.readArticle {
+  color: #fafafc;
+  font-size: 11.8px;
+  line-height: 22.992px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: 0.2px;
+  position: absolute;
+  left: 18.0781px;
+  top: 7.668px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.divCss1a6w5sj {
+  position: relative;
+  width: 289px;
+  height: 345px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 12px;
+  background-color: #edf2f7;
+  background-image: url('/assets/divCss1a6w5sj.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.divCss18tndj {
+  position: absolute;
+  left: 0;
+  top: 220px;
+  width: 289px;
+  height: 125px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 14.9297px 8px 6228.0117px;
+  background-image: linear-gradient(178deg, #12121600 1%, #121216b2 99%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+.paragraphChakraText3 {
+  width: 273px;
+  height: 97.19px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 20.7969px 6241.6143px 8px;
+}
+.shouldVerticalSoftware {
+  color: #fff;
+  font-size: 17.3px;
+  line-height: 24.3px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: 0.1px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.companiesDevelopInHouse {
+  color: #fff;
+  font-size: 17.3px;
+  line-height: 24.3px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: 0.1px;
+  width: min-content;
+  height: min-content;
+  margin: 0px 0px 0px -0.003124237060546875px;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.embeddedFinancingOr {
+  color: #fff;
+  font-size: 17.3px;
+  line-height: 24.3px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: 0.1px;
+  width: min-content;
+  height: min-content;
+  margin: 0px 0px 0px -0.003124237060546875px;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.partner {
+  color: #fff;
+  font-size: 17.3px;
+  line-height: 24.3px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: 0.1px;
+  width: min-content;
+  height: min-content;
+  margin: 0px 0px 0px -0.003124237060546875px;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.linkChakraButton3 {
+  position: relative;
+  width: 106.97px;
+  height: 38.82px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 9999px;
+  background-color: #fafafc59;
+}
+.readArticle2 {
+  color: #fafafc;
+  font-size: 11.8px;
+  line-height: 22.992px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: 0.2px;
+  position: absolute;
+  left: 18.0781px;
+  top: 7.668px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.divCss1dhe127 {
+  position: relative;
+  width: 289px;
+  height: 400px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 12px;
+  background-color: #e2562c;
+  overflow: hidden;
+}
+.divCss1nzoe9b {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 289px;
+  height: 400px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 226.2031px;
+  padding: 16px 16px 5995.8501px;
+}
+.divCss1vwwd7h {
+  width: 257px;
+  height: 76.8px;
+  align-items: flex-start;
+  gap: 68.773px;
+  padding: 0 704px 0 0;
+}
+.paragraphChakraText4 {
+  width: 148.23px;
+  height: 76.8px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 0.0004px 6008.5845px 0;
+}
+.cAC {
+  color: #fff;
+  font-size: 31.1px;
+  line-height: 38.4px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: -0.4px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.calculator {
+  color: #fff;
+  font-size: 31.1px;
+  line-height: 38.4px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: -0.4px;
+  width: min-content;
+  height: min-content;
+  margin: 0px 0px 0px -0.00156402587890625px;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.icon {
+  width: 40px;
+  height: 40px;
+}
+.icon2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.divCss85ugcb {
+  width: 257px;
+  height: 65px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 21.3203px;
+  padding: 14.9297px 8px 6327.0117px;
+}
+.paragraphChakraText5 {
+  width: 241px;
+  height: 48.6px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 26.8594px 6340.6143px 0;
+}
+.whatIsCACAndHowDoI {
+  color: #fff;
+  font-size: 17.3px;
+  line-height: 24.3px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: 0.1px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.calculateIt {
+  color: #fff;
+  font-size: 17.3px;
+  line-height: 24.3px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: 0.1px;
+  width: min-content;
+  height: min-content;
+  margin: 0px 0px 0px -0.003124237060546875px;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.linkChakraButton4 {
+  position: relative;
+  width: 106.97px;
+  height: 38.82px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 9999px;
+  background-color: #fafafc40;
+}
+.readArticle3 {
+  color: #fff;
+  font-size: 11.8px;
+  line-height: 22.992px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: 0.2px;
+  position: absolute;
+  left: 18.0781px;
+  top: 7.668px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.divCss15f8yxd {
+  position: relative;
+  width: 289px;
+  height: 276px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 12px;
+  background-color: #25262d;
+  overflow: hidden;
+}
+.divCss1vl8oxe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 289px;
+  height: 276px;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+.divCss79elbk {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 289px;
+  height: 276px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 0 5826.8579px;
+}
+.videoCssKuefc4 {
+  opacity: 0.7;
+  position: relative;
+  width: 289px;
+  height: 276px;
+  flex-direction: column;
+  overflow: hidden;
+}
+.divCssH8qx3h {
+  position: relative;
+  width: 289px;
+  height: 234px;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0px 0px 0px -169.9921875px;
+}
+.linkChakraButton5 {
+  position: absolute;
+  left: 91.0156px;
+  top: 180.25px;
+  width: 106.97px;
+  height: 38.82px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 9999px;
+  background-color: #09090b;
+}
+.readArticle4 {
+  color: #fafafce5;
+  font-size: 11.8px;
+  line-height: 22.992px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  letter-spacing: 0.2px;
+  position: absolute;
+  left: 18.0781px;
+  top: 7.668px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.paragraphChakraText6 {
+  position: absolute;
+  left: 8px;
+  top: 14.9297px;
+  width: 273px;
+  height: 48px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.yourProductOrService {
+  color: #fff;
+  font-size: 15.9px;
+  line-height: 24px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 45.6172px;
+  top: 23.75px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+._3StepsToEmbedFinancingInto {
+  color: #fff;
+  font-size: 15.9px;
+  line-height: 24px;
+  font-weight: 500;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 16.1563px;
+  top: -0.25px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}

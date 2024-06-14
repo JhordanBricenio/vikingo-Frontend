@@ -108,23 +108,21 @@ export class IndexProductsComponent {
           return [
             product.id,
             product.nombre, 
-            product.precio, 
+           // product.precio, 
             product.precioVenta,
             product.stock,
-            product.nventas,
+           // product.nventas,
              product.cantidad, 
              product.estado,
              montoInvertido,
               
             ];
-            
-
         })
 
         const totalMontoInvertido = ventasArray.reduce((acc, curr) => acc + curr[8], 0);
     
         const totalRegistro= ventasArray.length;
-        const encabezado = ["ID","Nombre", "Precio C", "Precio V","Stock", "NVentas", "Cantidad", "Estado"];
+        const encabezado = ["ID","Nombre", "Precio V","Stock","Cantidad", "Estado"];
         ventasArray.push(["", "", "Total: " + totalRegistro, "", "", "", totalMontoInvertido]);       
 
         this.imprimirService.imprimirFactura(encabezado, ventasArray, "Reporte de productos", true);

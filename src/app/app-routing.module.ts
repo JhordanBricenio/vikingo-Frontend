@@ -16,11 +16,13 @@ import { CreateCategoriesComponent } from './components/administrator/categories
 import { SignupComponent } from './components/administrator/signup/signup.component';
 import { ProfileComponent } from './components/administrator/profile/profile.component';
 import { RegisterComponent } from './components/administrator/register/register.component';
+import { ModalllComponent } from './components/administrator/modalll/modalll.component';
 
 
 const routes: Routes = [
   { path: '', component: SignupComponent, pathMatch: 'full'} ,
   { path: 'usuario/register', component: RegisterComponent, pathMatch: 'full'} ,
+  { path: 'modal', component: ModalllComponent },
 
   {
   path: 'admin', component: DashboardComponent,
@@ -31,6 +33,7 @@ const routes: Routes = [
     { path: 'products/edit/:id', component: CreateProductsComponent },
     { path: 'products/page/:page', component: IndexProductsComponent },
     { path: 'products/ver/:id', component: DetalleProductsComponent },
+
 
     { path: 'ventas', component: IndexVentasComponent },
     { path: 'ventas/create', component: CreateVentasComponent },

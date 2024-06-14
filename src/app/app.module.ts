@@ -49,6 +49,7 @@ import { SignupComponent } from './components/administrator/signup/signup.compon
 import { ContactComponent } from './components/Inicio/contact/contact.component';
 import { ProfileComponent } from './components/administrator/profile/profile.component';
 import { RegisterComponent } from './components/administrator/register/register.component';
+import { ModalllComponent } from './components/administrator/modalll/modalll.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { RegisterComponent } from './components/administrator/register/register.
     SignupComponent,
     ContactComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    ModalllComponent
   ],
   imports: [
     BrowserModule,

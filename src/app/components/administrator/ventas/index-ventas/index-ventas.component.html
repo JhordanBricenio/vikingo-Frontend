@@ -87,7 +87,7 @@
                                             <td><span><a class="me-4" data-bs-toggle="tooltip"
                                                         data-placement="top" title="Edit"><i
                                                             class="fas fa-pencil-alt color-muted"></i> </a><a
-                                                            *ngIf="authservice.hasRole('ROLE_ADMIN')"   (click)="delete(item)" style="cursor: pointer;"
+                                                            *ngIf="authservice.hasRole('ROLE_ADMIN')&&item.estado=='Cerrada'"   (click)="delete(item)" style="cursor: pointer;"
                                                         data-bs-toggle="tooltip" data-placement="top" title="btn-close"><i
                                                             class="fas fa-times color-danger"></i></a></span>
                                             </td>

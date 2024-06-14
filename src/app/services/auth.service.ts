@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
- 
+
   private httheaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   private _usuario: Usuario;
@@ -41,9 +41,9 @@ export class AuthService {
   }
 
   public login(loginData: any): Observable<any> {
-
-    return this.http.post<any>(`${this.url}/token`, loginData);
+    return this.http.post<any>(`${this.url}/sign-in`, loginData);
   }
+
   public agregarAuthorizationHeader() {
     let token = this.token;
     if (token != null) {
@@ -53,11 +53,10 @@ export class AuthService {
   }
 
   public guardarUsuario(accessToken: string) {
-    let payload = this.obtenerDatosToken(accessToken);
+    let payload = this.obtenerDatosToken(accessToken);  
     this._usuario = new Usuario();
     this._usuario.email = payload.sub;
-    this._usuario.roles = payload.auth;
-    
+    this._usuario.roles = payload.authorities;
     sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
 
   }
@@ -79,13 +78,13 @@ export class AuthService {
     return false;
   }
 
-  hasRole(role: string): boolean {
-    if (this.usuario.roles.includes(role)) {    
+  hasRole(role: string): boolean {  
+    if (this.usuario.roles.includes(role)) {
       return true;
     }
     return false;
   }
-  
+
   logout(): void {
     this._token = null;
     this._usuario = null;
@@ -106,7 +105,7 @@ export class AuthService {
     return false;
   }
 
- 
 
- 
+
+
 }
